@@ -164,7 +164,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
       {/* Footer Content - Metadata BELOW the card (Removed Title, kept Date) */}
       <div className="flex items-center justify-between px-1">
         <p className="text-[13px] text-[#717171] dark:text-zinc-400 font-bold tracking-tight">
-          {new Date(edition.date).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
+          {edition.author || 'Pretheesh'}
         </p>
         <div className="flex items-center gap-1">
           <button className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors text-[#222222] dark:text-zinc-200"><Share2 size={18} /></button>

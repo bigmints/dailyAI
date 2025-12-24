@@ -15,6 +15,7 @@ export interface DailyEdition {
   date: string;
   title: string;
   summary?: string;
+  author?: string;
   articles: Article[];
 }
 
