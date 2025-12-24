@@ -4,41 +4,28 @@ import { Article, DailyEdition, AppMode } from './types';
 import SlideshowPost from './components/SlideshowPost';
 import CurateMode from './components/CurateMode';
 import { LayoutGrid, PlusCircle, Sparkles, User, ArrowUp, Zap, Radio, Menu, X } from 'lucide-react';
-
-const INITIAL_EDITION: DailyEdition = {
-  id: 'ed-42',
-  date: new Date().toISOString(),
-  title: 'Future Systems & Human Interface',
-  articles: [
-    {
-      id: '1',
-      title: 'Neural Computing & The Human Link',
-      url: 'https://example.com/neural',
-      shortDescription: 'Exploring how biologically inspired hardware is revolutionizing the speed of artificial intelligence.',
-      fullSummary: 'Summary...',
-      imageUrl: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200',
-      category: 'Intelligence',
-      date: new Date().toISOString()
-    },
-    {
-      id: '2',
-      title: 'Architecture in the Age of Ecology',
-      url: 'https://example.com/cities',
-      shortDescription: 'A deep dive into urban planning strategies that will define the net-zero metropolis of tomorrow.',
-      fullSummary: 'Summary...',
-      imageUrl: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=1200',
-      category: 'Living',
-      date: new Date().toISOString()
-    }
-  ]
-};
+import { loadAllEditions } from './services/dataService';
 
 const App: React.FC = () => {
-  const [editions, setEditions] = useState<DailyEdition[]>([INITIAL_EDITION]);
+  const [editions, setEditions] = useState<DailyEdition[]>([]);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [mode, setMode] = useState<AppMode>(AppMode.FEED);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const observerTarget = useRef<HTMLDivElement>(null);
+
+  // Load editions from JSON files on mount
+  useEffect(() => {
+    loadAllEditions()
+      .then(data => {
+        setEditions(data);
+        setIsInitialLoading(false);
+      })
+      .catch(error => {
+        console.error('Failed to load editions:', error);
+        setIsInitialLoading(false);
+      });
+  }, []);
 
   const loadMoreEditions = useCallback(async () => {
     if (isLoadingMore) return;
@@ -98,7 +85,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#fafafa]">
-      
+
       {/* Desktop Floating Command Center (Bottom-Left) */}
       <div className="fixed bottom-8 left-8 z-[60] hidden lg:block">
         <div className="glass p-5 rounded-[28px] shadow-airbnb border border-black/5 flex flex-col gap-6 w-[220px]">
@@ -116,7 +103,7 @@ const App: React.FC = () => {
           </div>
           <div className="flex flex-col gap-1">
             {navItems.map((item) => (
-              <button 
+              <button
                 key={item.label}
                 onClick={() => setMode(item.mode)}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all font-bold text-sm ${mode === item.mode ? 'bg-indigo-50 text-indigo-600' : 'text-[#717171] hover:bg-zinc-50 hover:text-[#222222]'}`}
@@ -153,8 +140,8 @@ const App: React.FC = () => {
             <p className="text-[8px] font-bold text-indigo-600 tracking-widest uppercase mt-0.5 leading-none">Intelligence</p>
           </div>
         </div>
-        
-        <button 
+
+        <button
           onClick={() => setIsMenuOpen(true)}
           className="w-10 h-10 flex items-center justify-center bg-zinc-50 rounded-full text-[#222222] active:scale-90 transition-transform"
         >
@@ -163,18 +150,18 @@ const App: React.FC = () => {
       </header>
 
       {/* Mobile Drawer */}
-      <div 
+      <div
         className={`fixed inset-0 z-[110] transition-opacity duration-300 lg:hidden ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
-        <div 
-          className="absolute inset-0 bg-black/40 backdrop-blur-sm" 
+        <div
+          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         />
-        <div 
+        <div
           className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-[32px] p-8 shadow-2xl transition-transform duration-500 ease-out transform ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}
         >
           <div className="w-12 h-1.5 bg-zinc-200 rounded-full mx-auto mb-10" />
-          
+
           <div className="flex flex-col gap-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -186,7 +173,7 @@ const App: React.FC = () => {
                   <p className="text-xs font-bold text-indigo-600 tracking-widest uppercase">Curated by Gemini</p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(false)}
                 className="w-12 h-12 bg-zinc-100 rounded-full flex items-center justify-center text-[#717171] active:scale-90 transition-transform"
               >
@@ -196,7 +183,7 @@ const App: React.FC = () => {
 
             <div className="grid grid-cols-1 gap-3">
               {navItems.map((item) => (
-                <button 
+                <button
                   key={item.label}
                   onClick={() => {
                     setMode(item.mode);
@@ -232,7 +219,15 @@ const App: React.FC = () => {
 
       {/* Content Area */}
       <main className="pt-24 lg:pt-16 pb-48 px-6">
-        {mode === AppMode.CURATE ? (
+        {isInitialLoading ? (
+          <div className="min-h-screen flex flex-col items-center justify-center gap-6">
+            <div className="w-16 h-16 border-4 border-indigo-600/20 border-t-indigo-600 rounded-full animate-spin" />
+            <div className="text-center">
+              <p className="text-lg font-bold text-[#222222] mb-1">Loading Daily Editions...</p>
+              <p className="text-xs text-[#717171]">Curating your personalized feed</p>
+            </div>
+          </div>
+        ) : mode === AppMode.CURATE ? (
           <div className="max-w-xl mx-auto pt-10">
             <CurateMode onArticleAdded={handleArticleAdded} />
           </div>
@@ -244,15 +239,15 @@ const App: React.FC = () => {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#717171]">Current Edition • {new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}</p>
               </div>
               <h2 className="text-[38px] sm:text-[52px] font-extrabold tracking-tighter text-[#222222] leading-[0.95] mb-8">
-                Good morning. <br/><span className="text-indigo-600">You're up to speed.</span>
+                Good morning. <br /><span className="text-indigo-600">You're up to speed.</span>
               </h2>
               <div className="flex flex-col sm:flex-row items-center gap-4 p-5 bg-white rounded-[28px] border border-[#ebebeb] shadow-sm">
                 <div className="flex -space-x-2.5">
-                  {[1,2,3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white bg-zinc-200" />)}
+                  {[1, 2, 3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white bg-zinc-200" />)}
                 </div>
                 <p className="text-[13px] text-[#717171] font-bold leading-tight text-center sm:text-left">
-                  <span className="text-[#222222]">Freshly Curated</span><br/>
-                  {editions[0].articles.length} essential insights waiting for you.
+                  <span className="text-[#222222]">Freshly Curated</span><br />
+                  {editions.length > 0 ? editions[0].articles.length : 0} essential insights waiting for you.
                 </p>
               </div>
             </header>
@@ -262,7 +257,7 @@ const App: React.FC = () => {
                 <SlideshowPost key={edition.id} edition={edition} />
               ))}
             </div>
-            
+
             <div ref={observerTarget} className="py-32 flex flex-col items-center gap-6">
               {isLoadingMore ? (
                 <div className="flex flex-col items-center gap-4">
@@ -282,7 +277,7 @@ const App: React.FC = () => {
 
       {/* Floating Back to Top (Bottom-Right) */}
       {mode === AppMode.FEED && (
-        <button 
+        <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="fixed bottom-8 right-8 w-14 h-14 bg-white text-[#222222] rounded-[22px] shadow-airbnb flex items-center justify-center hover:scale-110 active:scale-95 transition-all border border-black/5 z-50 group overflow-hidden"
         >
