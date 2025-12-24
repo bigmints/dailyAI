@@ -21,7 +21,7 @@ const AVAILABLE_DATES = [
 export async function loadEdition(date: string): Promise<DailyEdition | null> {
     try {
         // Use BASE_URL to ensure correct path on GitHub Pages
-        const baseUrl = import.meta.env.BASE_URL || '/';
+        const baseUrl = (import.meta as any).env?.BASE_URL || '/';
         const url = `${baseUrl}_data/${date}.json`;
         const response = await fetch(url);
         if (!response.ok) {
