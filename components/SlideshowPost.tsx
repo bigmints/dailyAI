@@ -79,7 +79,9 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
                   </h1>
                 ) : (
                   <div className="flex flex-col gap-4">
-                    <h1 className="text-[24px] font-bold text-white/50 uppercase tracking-widest">Today's Briefing</h1>
+                    <h1 className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em]">
+                      Briefing • {new Date(edition.date).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
+                    </h1>
                     <div className="flex flex-col gap-3">
                       {edition.articles.slice(0, 3).map((article) => (
                         <div key={article.id} className="flex gap-3 items-start">
