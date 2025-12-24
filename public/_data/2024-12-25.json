@@ -1,17 +1,19 @@
+```json
 {
     "id": "ed-2024-12-25",
     "date": "2024-12-25T00:00:00.000Z",
     "title": "AI Breakthroughs & Innovation",
     "articles": [
         {
-            "id": "art-gemini-3-2024",
+            "id": "art-spatial-intelligence-2024",
             "url": "https://substack.com/home/post/p-178294178",
-            "title": "Google Launches Gemini 3 with New Coding App and Record Benchmark Scores",
-            "shortDescription": "Google unveils Gemini 3, its most powerful AI model yet, featuring breakthrough coding capabilities and industry-leading benchmark performance.",
-            "fullSummary": "Google has launched Gemini 3, marking a significant leap forward in AI capabilities. The new model achieves record-breaking scores across multiple industry benchmarks, demonstrating substantial improvements in reasoning, code generation, and multimodal understanding. Alongside the model release, Google introduced a new dedicated coding application that leverages Gemini 3's advanced capabilities to assist developers with complex programming tasks, code review, and architectural design. Early testing shows the model outperforming competitors in code optimization, bug detection, and generating production-ready code across multiple programming languages.",
-            "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
+            "title": "From Words to Worlds: Spatial Intelligence is AI's Next Frontier",
+            "shortDescription": "Dr. Fei-Fei Li explores how spatial intelligence will transform AI from understanding language to comprehending and interacting with the 3D world.",
+            "fullSummary": "In this groundbreaking essay, Dr. Fei-Fei Li, renowned AI pioneer and co-founder of World Labs, argues that spatial intelligence represents the next major frontier in artificial intelligence. While current AI excels at language and 2D pattern recognition, true intelligence requires understanding the three-dimensional world—how objects move, interact, and relate to each other in space and time. Drawing on neuroscience and cognitive science, Li explains how spatial intelligence serves as the scaffolding of human cognition, enabling us to navigate, predict, and manipulate our environment. She outlines a vision for the next decade of AI focused on building 'world models' that can perceive, reason about, and act in physical and virtual 3D spaces, potentially revolutionizing robotics, AR/VR, autonomous systems, and human-computer interaction.",
+            "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200",
             "date": "2024-12-25T00:00:00.000Z",
-            "category": "AI Technology"
+            "category": "AI Research"
         }
     ]
 }
+```
