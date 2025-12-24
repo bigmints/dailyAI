@@ -40,9 +40,21 @@ This site is deployed to **GitHub Pages** using GitHub Actions:
 - Every push to `main` triggers an automatic build
 - Workflow: `.github/workflows/deploy.yml`
 - Live site updates within 2-3 minutes
+- Configured for: https://bigmints.github.io/dailyAI/
 
-### Repository Setup Required
+### First-Time Setup
 
-1. Go to repository Settings > Pages
-2. Set Source to "GitHub Actions"
-3. Push to `main` to trigger first deployment
+1. **Enable GitHub Pages**:
+   - Go to repository Settings > Pages
+   - Set Source to "GitHub Actions"
+
+2. **Deploy**:
+   ```bash
+   git add .
+   git commit -m "Deploy to GitHub Pages"
+   git push origin main
+   ```
+
+3. **Monitor**: Check the Actions tab for deployment status
+
+4. **Access**: Visit https://bigmints.github.io/dailyAI/ once deployed
