@@ -96,7 +96,7 @@ const App: React.FC = () => {
             <img
               src={`${(import.meta as any).env.BASE_URL}logo.png`}
               alt="Pulse Logo"
-              className="w-10 h-10 object-contain shadow-soft rounded-xl"
+              className="w-10 h-10 object-contain"
             />
             <div>
               <h1 className="text-lg font-extrabold tracking-tighter text-[#222222]">Pulse</h1>
@@ -137,7 +137,7 @@ const App: React.FC = () => {
           <img
             src={`${(import.meta as any).env.BASE_URL}logo.png`}
             alt="Pulse Logo"
-            className="w-10 h-10 object-contain shadow-soft rounded-xl"
+            className="w-10 h-10 object-contain"
           />
           <div>
             <h1 className="text-base font-extrabold tracking-tighter text-[#222222] leading-none">Pulse</h1>
@@ -172,7 +172,7 @@ const App: React.FC = () => {
                 <img
                   src={`${(import.meta as any).env.BASE_URL}logo.png`}
                   alt="Pulse Logo"
-                  className="w-16 h-16 object-contain shadow-lg rounded-2xl"
+                  className="w-16 h-16 object-contain"
                 />
                 <div>
                   <h1 className="text-2xl font-extrabold tracking-tighter text-[#222222]">Pulse</h1>
