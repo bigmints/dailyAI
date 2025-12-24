@@ -1,0 +1,165 @@
+
+import React, { useRef, useState } from 'react';
+import { DailyEdition } from '../types';
+import { ChevronLeft, ChevronRight, Share2, MoreHorizontal, Layers, ArrowRight, ChevronRight as ChevronRightIcon } from 'lucide-react';
+
+interface SlideshowPostProps {
+  edition: DailyEdition;
+}
+
+const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const totalSlides = edition.articles.length + 1;
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollPosition = scrollRef.current.scrollLeft;
+      const slideWidth = scrollRef.current.offsetWidth;
+      if (slideWidth > 0) {
+        const newActiveSlide = Math.round(scrollPosition / slideWidth);
+        if (newActiveSlide !== activeSlide) setActiveSlide(newActiveSlide);
+      }
+    }
+  };
+
+  const scrollToSlide = (index: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: index * scrollRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <div className="w-full max-w-[548px] mx-auto animate-pulse-in">
+      {/* Main Slideshow Card - Full Bleed Image Container */}
+      <div className="relative aspect-[4/5] bg-zinc-100 rounded-[24px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.08)] border border-[#ebebeb] group mb-5">
+        
+        {/* Story Progress Indicators (Top Bar) */}
+        <div className="absolute top-5 inset-x-10 z-30 flex gap-1.5 h-[2px]">
+          {Array.from({ length: totalSlides }).map((_, i) => (
+            <div key={i} className="flex-1 bg-white/30 rounded-full overflow-hidden">
+              <div 
+                className={`h-full bg-white transition-all duration-300 ease-out ${activeSlide === i ? 'w-full' : activeSlide > i ? 'w-full' : 'w-0'}`}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div 
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex h-full overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-pointer"
+        >
+          {/* Cover Slide */}
+          <div className="flex-shrink-0 w-full h-full relative snap-start">
+             <div className="absolute inset-0">
+               <img 
+                 src={edition.articles[0]?.imageUrl} 
+                 alt="Background" 
+                 className="w-full h-full object-cover"
+               />
+               <div className="absolute inset-0 bg-black/40" />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+             </div>
+             
+             <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-7 h-7 bg-[#4F46E5] rounded-lg flex items-center justify-center text-white shadow-lg">
+                    <Layers size={14} fill="white" />
+                  </div>
+                  <span className="text-[10px] font-bold text-white uppercase tracking-[0.15em]">Daily Intelligence</span>
+                </div>
+                <h1 className="text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter mb-10">
+                  The most important <br/>insights for today.
+                </h1>
+                
+                <div className="flex items-center justify-between text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] border-t border-white/20 pt-8">
+                  <div className="flex items-center gap-1.5">
+                    <span>Swipe to begin</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-1.5">
+                       {Array.from({ length: totalSlides }).map((_, i) => (
+                        <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeSlide === i ? 'bg-white' : 'bg-white/30'}`} />
+                       ))}
+                    </div>
+                    <ChevronRightIcon size={14} className="opacity-80" />
+                  </div>
+                </div>
+             </div>
+          </div>
+
+          {/* Article Slides */}
+          {edition.articles.map((article) => (
+            <div key={article.id} className="flex-shrink-0 w-full h-full relative snap-start overflow-hidden">
+              <img 
+                src={article.imageUrl} 
+                alt={article.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              
+              <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
+                <div className="mb-4">
+                  <span className="px-3 py-1 bg-white/20 backdrop-blur-xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                    {article.category}
+                  </span>
+                </div>
+                
+                <h3 className="text-[32px] font-extrabold text-white mb-3 leading-[1.05] tracking-tighter">
+                  {article.title}
+                </h3>
+                
+                <p className="text-white/70 text-[14px] mb-8 leading-relaxed line-clamp-2 font-medium">
+                  {article.shortDescription}
+                </p>
+                
+                <div className="flex">
+                  <a 
+                    href={article.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-[#222222] rounded-xl font-bold text-sm hover:bg-zinc-50 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.1)] active:scale-95 group/btn"
+                  >
+                    Read article
+                    <ArrowRight size={18} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Side Controls */}
+        <button 
+          onClick={(e) => { e.stopPropagation(); scrollToSlide(activeSlide - 1); }}
+          className={`absolute left-5 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-[#222222] shadow-soft transition-all z-30 ${activeSlide > 0 ? 'opacity-0 group-hover:opacity-100' : 'hidden'}`}
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button 
+          onClick={(e) => { e.stopPropagation(); scrollToSlide(activeSlide + 1); }}
+          className={`absolute right-5 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-[#222222] shadow-soft transition-all z-30 ${activeSlide < totalSlides - 1 ? 'opacity-0 group-hover:opacity-100' : 'hidden'}`}
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+
+      {/* Footer Content - Metadata BELOW the card (Removed Title, kept Date) */}
+      <div className="flex items-center justify-between px-1">
+        <p className="text-[13px] text-[#717171] font-bold tracking-tight">
+          {new Date(edition.date).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
+        </p>
+        <div className="flex items-center gap-1">
+          <button className="p-2 hover:bg-zinc-100 rounded-full transition-colors text-[#222222]"><Share2 size={18} /></button>
+          <button className="p-2 hover:bg-zinc-100 rounded-full transition-colors text-[#222222]"><MoreHorizontal size={18} /></button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SlideshowPost;
