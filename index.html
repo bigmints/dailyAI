@@ -4,18 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#4F46E5">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Pulse">
   <title>Pulse | Curated Feed</title>
-  
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="/dailyAI/manifest.json">
-  
-  <!-- App Icons -->
-  <link rel="icon" type="image/png" sizes="192x192" href="/dailyAI/icons/icon-192x192.png">
-  <link rel="apple-touch-icon" href="/dailyAI/icons/icon-192x192.png">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" href="/dailyAI/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,16 +67,5 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
-  
-  <!-- Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/dailyAI/sw.js')
-          .then(reg => console.log('[PWA] Service Worker registered'))
-          .catch(err => console.error('[PWA] Service Worker registration failed:', err));
-      });
-    }
-  </script>
 </body>
 </html>
