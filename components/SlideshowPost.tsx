@@ -66,12 +66,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
             </div>
 
             <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-7 h-7 bg-[#4F46E5] rounded-lg flex items-center justify-center text-white shadow-lg">
-                  <Layers size={14} fill="white" />
-                </div>
-                <span className="text-[10px] font-bold text-white uppercase tracking-[0.15em]">Daily Intelligence</span>
-              </div>
+
               <div className="mb-10">
                 {edition.summary ? (
                   <h1 className="text-[32px] sm:text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter">
