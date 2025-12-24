@@ -6,6 +6,7 @@ import { DailyEdition } from '../types';
 
 // List of available dates (in production, this could be generated or fetched from an index)
 const AVAILABLE_DATES = [
+    '2024-12-25',
     '2024-12-24',
     '2024-12-23',
     '2024-12-22',
