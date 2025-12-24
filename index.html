@@ -13,14 +13,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-main: #222222;
-      --text-secondary: #717171;
-      --accent: #4F46E5;
-    }
-    body {
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --bg-color: #ffffff;
+        --text-main: #222222;
+        --text-secondary: #717171;
+        --accent: #4F46E5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #09090b;
+          --text-main: #f4f4f5;
+          --text-secondary: #a1a1aa;
+        }
+      }
+      body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);

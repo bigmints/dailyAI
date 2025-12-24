@@ -84,11 +84,11 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fafafa]">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-zinc-950 transition-colors duration-300">
 
       {/* Desktop Floating Command Center (Bottom-Left) */}
       <div className="fixed bottom-8 left-8 z-[60] hidden lg:block">
-        <div className="glass p-5 rounded-[28px] shadow-airbnb border border-black/5 flex flex-col gap-6 w-[220px]">
+        <div className="glass dark:bg-zinc-900/80 dark:border-white/10 p-5 rounded-[28px] shadow-airbnb border border-black/5 flex flex-col gap-6 w-[220px]">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => {
             setMode(AppMode.FEED);
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -96,11 +96,11 @@ const App: React.FC = () => {
             <img
               src={`${(import.meta as any).env.BASE_URL}logo.png`}
               alt="Pulse Logo"
-              className="w-10 h-10 object-contain"
+              className="w-10 h-10 object-contain rounded-xl"
             />
             <div>
-              <h1 className="text-lg font-extrabold tracking-tighter text-[#222222]">Pulse</h1>
-              <p className="text-[9px] font-bold text-indigo-600 tracking-widest uppercase mt-0.5">Gemini AI</p>
+              <h1 className="text-lg font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100">Pulse</h1>
+              <p className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mt-0.5">Gemini AI</p>
             </div>
           </div>
           <div className="flex flex-col gap-1">
@@ -108,7 +108,7 @@ const App: React.FC = () => {
               <button
                 key={item.label}
                 onClick={() => setMode(item.mode)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all font-bold text-sm ${mode === item.mode ? 'bg-indigo-50 text-indigo-600' : 'text-[#717171] hover:bg-zinc-50 hover:text-[#222222]'}`}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all font-bold text-sm ${mode === item.mode ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300' : 'text-[#717171] dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-[#222222] dark:hover:text-zinc-200'}`}
               >
                 {item.icon}
                 {item.label}
@@ -129,7 +129,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Mobile Normal App Bar (Top Edge-to-Edge) */}
-      <header className="fixed top-0 left-0 right-0 z-[100] h-16 bg-white/90 backdrop-blur-xl border-b border-black/5 px-6 flex items-center justify-between lg:hidden shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-[100] h-16 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl border-b border-black/5 dark:border-white/5 px-6 flex items-center justify-between lg:hidden shadow-sm transition-colors duration-300">
         <div className="flex items-center gap-3" onClick={() => {
           setMode(AppMode.FEED);
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -137,17 +137,17 @@ const App: React.FC = () => {
           <img
             src={`${(import.meta as any).env.BASE_URL}logo.png`}
             alt="Pulse Logo"
-            className="w-10 h-10 object-contain"
+            className="w-10 h-10 object-contain rounded-xl"
           />
           <div>
-            <h1 className="text-base font-extrabold tracking-tighter text-[#222222] leading-none">Pulse</h1>
-            <p className="text-[8px] font-bold text-indigo-600 tracking-widest uppercase mt-0.5 leading-none">Intelligence</p>
+            <h1 className="text-base font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100 leading-none">Pulse</h1>
+            <p className="text-[8px] font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mt-0.5 leading-none">Intelligence</p>
           </div>
         </div>
 
         <button
           onClick={() => setIsMenuOpen(true)}
-          className="w-10 h-10 flex items-center justify-center bg-zinc-50 rounded-full text-[#222222] active:scale-90 transition-transform"
+          className="w-10 h-10 flex items-center justify-center bg-zinc-50 dark:bg-zinc-800 rounded-full text-[#222222] dark:text-zinc-200 active:scale-90 transition-transform"
         >
           <Menu size={20} />
         </button>
@@ -162,9 +162,9 @@ const App: React.FC = () => {
           onClick={() => setIsMenuOpen(false)}
         />
         <div
-          className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-[32px] p-8 shadow-2xl transition-transform duration-500 ease-out transform ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}
+          className={`absolute bottom-0 left-0 right-0 bg-white dark:bg-zinc-900 rounded-t-[32px] p-8 shadow-2xl transition-transform duration-500 ease-out transform ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}
         >
-          <div className="w-12 h-1.5 bg-zinc-200 rounded-full mx-auto mb-10" />
+          <div className="w-12 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full mx-auto mb-10" />
 
           <div className="flex flex-col gap-8">
             <div className="flex items-center justify-between">
@@ -172,16 +172,16 @@ const App: React.FC = () => {
                 <img
                   src={`${(import.meta as any).env.BASE_URL}logo.png`}
                   alt="Pulse Logo"
-                  className="w-16 h-16 object-contain"
+                  className="w-16 h-16 object-contain rounded-2xl"
                 />
                 <div>
-                  <h1 className="text-2xl font-extrabold tracking-tighter text-[#222222]">Pulse</h1>
-                  <p className="text-xs font-bold text-indigo-600 tracking-widest uppercase">Curated by Gemini</p>
+                  <h1 className="text-2xl font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100">Pulse</h1>
+                  <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase">Curated by Gemini</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="w-12 h-12 bg-zinc-100 rounded-full flex items-center justify-center text-[#717171] active:scale-90 transition-transform"
+                className="w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full flex items-center justify-center text-[#717171] dark:text-zinc-400 active:scale-90 transition-transform"
               >
                 <X size={24} />
               </button>
@@ -229,8 +229,8 @@ const App: React.FC = () => {
           <div className="min-h-screen flex flex-col items-center justify-center gap-6">
             <div className="w-16 h-16 border-4 border-indigo-600/20 border-t-indigo-600 rounded-full animate-spin" />
             <div className="text-center">
-              <p className="text-lg font-bold text-[#222222] mb-1">Loading Daily Editions...</p>
-              <p className="text-xs text-[#717171]">Curating your personalized feed</p>
+              <p className="text-lg font-bold text-[#222222] dark:text-zinc-100 mb-1">Loading Daily Editions...</p>
+              <p className="text-xs text-[#717171] dark:text-zinc-500">Curating your personalized feed</p>
             </div>
           </div>
         ) : mode === AppMode.CURATE ? (
@@ -239,24 +239,30 @@ const App: React.FC = () => {
           </div>
         ) : (
           <div>
-            <header className="max-w-[548px] mx-auto mb-20 px-1 animate-pulse-in text-center sm:text-left">
-              <div className="flex items-center justify-center sm:justify-start gap-2 mb-6">
-                <Zap size={14} className="text-indigo-500" fill="currentColor" />
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#717171]">Current Edition • {new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}</p>
+            <div className={`p-4 rounded-[20px] mb-6 ${isInitialLoading ? 'bg-indigo-50 dark:bg-indigo-900/10' : 'bg-transparent'}`}>
+              <div className="flex items-center gap-3 mb-2">
+                <Sparkles size={16} className={`${isInitialLoading ? 'text-indigo-600 dark:text-indigo-400' : 'text-amber-500'} animate-pulse`} />
+                <span className={`text-xs font-bold tracking-wider uppercase ${isInitialLoading ? 'text-indigo-600 dark:text-indigo-400' : 'text-amber-600 dark:text-amber-500'}`}>
+                  {isInitialLoading ? 'Syncing...' : 'Daily Insight'}
+                </span>
               </div>
-              <h2 className="text-[38px] sm:text-[52px] font-extrabold tracking-tighter text-[#222222] leading-[0.95] mb-8">
-                Good morning. <br /><span className="text-indigo-600">You're up to speed.</span>
-              </h2>
-              <div className="flex flex-col sm:flex-row items-center gap-4 p-5 bg-white rounded-[28px] border border-[#ebebeb] shadow-sm">
-                <div className="flex -space-x-2.5">
-                  {[1, 2, 3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white bg-zinc-200" />)}
-                </div>
-                <p className="text-[13px] text-[#717171] font-bold leading-tight text-center sm:text-left">
-                  <span className="text-[#222222]">Freshly Curated</span><br />
-                  {editions.length > 0 ? editions[0].articles.length : 0} essential insights waiting for you.
-                </p>
+              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100 mb-2 leading-[0.9]">
+                {editions.length > 0 ? editions[0].title : 'Curating Feed...'}
+              </h1>
+              <p className="text-sm font-medium text-[#717171] dark:text-zinc-400 leading-relaxed max-w-lg">
+                Today's most important developments in AI and science, summarized for clarity.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4 mb-2 pl-1">
+              <div className="flex -space-x-3">
+                {[1, 2, 3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-800" />)}
               </div>
-            </header>
+              <p className="text-[13px] text-[#717171] dark:text-zinc-400 font-bold leading-tight text-center sm:text-left">
+                <span className="text-[#222222] dark:text-zinc-200">Freshly Curated</span><br />
+                {editions.length > 0 ? editions[0].articles.length : 0} essential insights waiting for you.
+              </p>
+            </div>
 
             <div className="flex flex-col gap-14">
               {editions.map((edition) => (
