@@ -239,30 +239,26 @@ const App: React.FC = () => {
           </div>
         ) : (
           <div>
-            <div className={`p-4 rounded-[20px] mb-6 ${isInitialLoading ? 'bg-indigo-50 dark:bg-indigo-900/10' : 'bg-transparent'}`}>
-              <div className="flex items-center gap-3 mb-2">
-                <Sparkles size={16} className={`${isInitialLoading ? 'text-indigo-600 dark:text-indigo-400' : 'text-amber-500'} animate-pulse`} />
-                <span className={`text-xs font-bold tracking-wider uppercase ${isInitialLoading ? 'text-indigo-600 dark:text-indigo-400' : 'text-amber-600 dark:text-amber-500'}`}>
-                  {isInitialLoading ? 'Syncing...' : 'Daily Insight'}
-                </span>
+            <header className="max-w-[548px] mx-auto mb-20 px-1 animate-pulse-in text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-6">
+                <Sparkles size={14} className="text-indigo-500 dark:text-indigo-400" fill="currentColor" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#717171] dark:text-zinc-500">
+                  Current Edition • {new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
+                </p>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100 mb-2 leading-[0.9]">
-                {editions.length > 0 ? editions[0].title : 'Curating Feed...'}
-              </h1>
-              <p className="text-sm font-medium text-[#717171] dark:text-zinc-400 leading-relaxed max-w-lg">
-                Today's most important developments in AI and science, summarized for clarity.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4 mb-2 pl-1">
-              <div className="flex -space-x-3">
-                {[1, 2, 3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-800" />)}
+              <h2 className="text-[38px] sm:text-[52px] font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100 leading-[0.95] mb-8">
+                Good morning. <br /><span className="text-indigo-600 dark:text-indigo-400">You're up to speed.</span>
+              </h2>
+              <div className="flex flex-col sm:flex-row items-center gap-4 p-5 bg-white dark:bg-zinc-900 rounded-[28px] border border-[#ebebeb] dark:border-zinc-800 shadow-sm">
+                <div className="flex -space-x-2.5">
+                  {[1, 2, 3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-800" />)}
+                </div>
+                <p className="text-[13px] text-[#717171] dark:text-zinc-400 font-bold leading-tight text-center sm:text-left">
+                  <span className="text-[#222222] dark:text-zinc-200">Freshly Curated</span><br />
+                  {editions.length > 0 ? editions[0].articles.length : 0} essential insights waiting for you.
+                </p>
               </div>
-              <p className="text-[13px] text-[#717171] dark:text-zinc-400 font-bold leading-tight text-center sm:text-left">
-                <span className="text-[#222222] dark:text-zinc-200">Freshly Curated</span><br />
-                {editions.length > 0 ? editions[0].articles.length : 0} essential insights waiting for you.
-              </p>
-            </div>
+            </header>
 
             <div className="flex flex-col gap-14">
               {editions.map((edition) => (
