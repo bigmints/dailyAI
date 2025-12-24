@@ -65,18 +65,34 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             </div>
 
-            <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
-              <div className="flex items-center gap-2 mb-4">
+            <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+              <div className="flex items-center gap-2 mb-6">
                 <div className="w-7 h-7 bg-[#4F46E5] rounded-lg flex items-center justify-center text-white shadow-lg">
                   <Layers size={14} fill="white" />
                 </div>
                 <span className="text-[10px] font-bold text-white uppercase tracking-[0.15em]">Daily Intelligence</span>
               </div>
-              <h1 className="text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter mb-10">
-                The most important <br />insights for today.
-              </h1>
 
-              <div className="flex items-center justify-between text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] border-t border-white/20 pt-8">
+              <div className="space-y-4 mb-8">
+                {edition.articles.slice(0, 3).map((article, index) => (
+                  <div key={article.id} className="flex gap-4 items-start group/item cursor-pointer" onClick={(e) => { e.stopPropagation(); scrollToSlide(index + 1); }}>
+                    <span className="text-white/40 text-xs font-bold pt-1">0{index + 1}</span>
+                    <div>
+                      <h3 className="text-white font-bold leading-tight mb-1 group-hover/item:text-indigo-300 transition-colors">
+                        {article.title}
+                      </h3>
+                      <p className="text-white/60 text-xs line-clamp-1">
+                        {article.shortDescription}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {edition.articles.length > 3 && (
+                  <p className="text-white/40 text-xs font-medium pl-6">+ {edition.articles.length - 3} more stories inside</p>
+                )}
+              </div>
+
+              <div className="flex items-center justify-between text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] border-t border-white/20 pt-6">
                 <div className="flex items-center gap-1.5">
                   <span>Swipe to begin</span>
                 </div>

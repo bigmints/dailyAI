@@ -100,7 +100,7 @@ const App: React.FC = () => {
             />
             <div>
               <h1 className="text-lg font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100">Pulse</h1>
-              <p className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mt-0.5">Gemini AI</p>
+              <p className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mt-0.5">DAILY AI NEWS</p>
             </div>
           </div>
           <div className="flex flex-col gap-1">
