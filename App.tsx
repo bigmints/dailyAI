@@ -93,9 +93,11 @@ const App: React.FC = () => {
             setMode(AppMode.FEED);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}>
-            <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-soft">
-              <Radio size={18} fill="currentColor" />
-            </div>
+            <img
+              src={`${(import.meta as any).env.BASE_URL}logo.png`}
+              alt="Pulse Logo"
+              className="w-10 h-10 object-contain shadow-soft rounded-xl"
+            />
             <div>
               <h1 className="text-lg font-extrabold tracking-tighter text-[#222222]">Pulse</h1>
               <p className="text-[9px] font-bold text-indigo-600 tracking-widest uppercase mt-0.5">Gemini AI</p>
@@ -132,9 +134,11 @@ const App: React.FC = () => {
           setMode(AppMode.FEED);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}>
-          <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-soft">
-            <Radio size={18} fill="currentColor" />
-          </div>
+          <img
+            src={`${(import.meta as any).env.BASE_URL}logo.png`}
+            alt="Pulse Logo"
+            className="w-10 h-10 object-contain shadow-soft rounded-xl"
+          />
           <div>
             <h1 className="text-base font-extrabold tracking-tighter text-[#222222] leading-none">Pulse</h1>
             <p className="text-[8px] font-bold text-indigo-600 tracking-widest uppercase mt-0.5 leading-none">Intelligence</p>
@@ -165,9 +169,11 @@ const App: React.FC = () => {
           <div className="flex flex-col gap-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
-                  <Radio size={28} fill="currentColor" />
-                </div>
+                <img
+                  src={`${(import.meta as any).env.BASE_URL}logo.png`}
+                  alt="Pulse Logo"
+                  className="w-16 h-16 object-contain shadow-lg rounded-2xl"
+                />
                 <div>
                   <h1 className="text-2xl font-extrabold tracking-tighter text-[#222222]">Pulse</h1>
                   <p className="text-xs font-bold text-indigo-600 tracking-widest uppercase">Curated by Gemini</p>
