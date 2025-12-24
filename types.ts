@@ -14,6 +14,7 @@ export interface DailyEdition {
   id: string;
   date: string;
   title: string;
+  summary?: string;
   articles: Article[];
 }
 
