@@ -72,9 +72,25 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
                 </div>
                 <span className="text-[10px] font-bold text-white uppercase tracking-[0.15em]">Daily Intelligence</span>
               </div>
-              <h1 className="text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter mb-10">
-                {edition.summary || <>The most important <br />insights for today.</>}
-              </h1>
+              <div className="mb-10">
+                {edition.summary ? (
+                  <h1 className="text-[32px] sm:text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter">
+                    {edition.summary}
+                  </h1>
+                ) : (
+                  <div className="flex flex-col gap-4">
+                    <h1 className="text-[24px] font-bold text-white/50 uppercase tracking-widest">Today's Briefing</h1>
+                    <div className="flex flex-col gap-3">
+                      {edition.articles.slice(0, 3).map((article) => (
+                        <div key={article.id} className="flex gap-3 items-start">
+                          <div className="w-1.5 h-1.5 rounded-full bg-white mt-2 flex-shrink-0" />
+                          <h2 className="text-xl font-bold text-white leading-tight">{article.title}</h2>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <div className="flex items-center justify-between text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] border-t border-white/20 pt-8">
                 <div className="flex items-center gap-1.5">
