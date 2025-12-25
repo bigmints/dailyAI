@@ -35,7 +35,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
   return (
     <div className="w-full max-w-[548px] mx-auto animate-pulse-in">
       {/* Main Slideshow Card - Full Bleed Image Container */}
-      <div className="relative aspect-[4/5] bg-zinc-100 dark:bg-zinc-900 rounded-[24px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.08)] border border-[#ebebeb] dark:border-zinc-800 group mb-5">
+      <div className="relative aspect-[3/5] bg-zinc-100 dark:bg-zinc-900 rounded-[24px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.08)] border border-[#ebebeb] dark:border-zinc-800 group mb-5">
 
         {/* Story Progress Indicators (Top Bar) */}
         <div className="absolute top-5 inset-x-10 z-30 flex gap-1.5 h-[2px]">
