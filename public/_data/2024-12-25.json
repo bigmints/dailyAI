@@ -2,7 +2,11 @@
     "id": "ed-2024-12-25",
     "date": "2024-12-25T00:00:00.000Z",
     "title": "AI Breakthroughs & Innovation",
-    "summary": "Dr. Fei-Fei Li on why Spatial Intelligence is AI's next frontier, plus the latest movements in the 3D world.",
+    "cover": {
+        "title": "Daily Briefing • Dec 25",
+        "summary": "Dr. Fei-Fei Li on why Spatial Intelligence is AI's next frontier, plus the latest movements in the 3D world.",
+        "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200"
+    },
     "articles": [
         {
             "id": "art-spatial-intelligence-2024",

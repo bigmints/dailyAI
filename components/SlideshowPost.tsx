@@ -35,7 +35,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
   return (
     <div className="w-full max-w-[548px] mx-auto animate-pulse-in">
       {/* Main Slideshow Card - Full Bleed Image Container */}
-      <div className="relative aspect-[3/5] bg-zinc-100 dark:bg-zinc-900 rounded-[24px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.08)] border border-[#ebebeb] dark:border-zinc-800 group mb-5">
+      <div className="relative aspect-[3/5] lg:aspect-auto lg:h-[70vh] bg-zinc-100 dark:bg-zinc-900 rounded-[24px] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.08)] border border-[#ebebeb] dark:border-zinc-800 group mb-5">
 
         {/* Story Progress Indicators (Top Bar) */}
         <div className="absolute top-5 inset-x-10 z-30 flex gap-1.5 h-[2px]">
@@ -57,7 +57,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
           <div className="flex-shrink-0 w-full h-full relative snap-start">
             <div className="absolute inset-0">
               <img
-                src={edition.articles[0]?.imageUrl}
+                src={edition.cover?.imageUrl || edition.articles[0]?.imageUrl}
                 alt="Background"
                 className="w-full h-full object-cover"
               />
@@ -68,7 +68,18 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
             <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
 
               <div className="mb-10">
-                {edition.summary ? (
+                {edition.cover ? (
+                  <div className="flex flex-col gap-4">
+                    {edition.cover.title && (
+                      <h1 className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em]">
+                        {edition.cover.title}
+                      </h1>
+                    )}
+                    <h1 className="text-[32px] sm:text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter">
+                      {edition.cover.summary}
+                    </h1>
+                  </div>
+                ) : edition.summary ? (
                   <h1 className="text-[32px] sm:text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter">
                     {edition.summary}
                   </h1>

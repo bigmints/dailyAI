@@ -2,6 +2,11 @@
   "id": "ed-2024-12-24",
   "date": "2024-12-24T00:00:00.000Z",
   "title": "Innovation & Discovery",
+  "cover": {
+    "title": "Daily Briefing • Dec 24",
+    "summary": "A $500B AI infrastructure plan, Google's new Disco search, and Microsoft's strategic shift.",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1200"
+  },
   "articles": [
     {
       "id": "art-quantum-2024",

@@ -2,6 +2,11 @@
   "id": "ed-2024-12-22",
   "date": "2024-12-22T00:00:00.000Z",
   "title": "Space Exploration & Cosmic Discoveries",
+  "cover": {
+    "title": "Daily Briefing • Dec 22",
+    "summary": "Space Exploration & Cosmic Discoveries",
+    "imageUrl": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&q=80&w=1200"
+  },
   "articles": [
     {
       "id": "art-mars-colony-2022",

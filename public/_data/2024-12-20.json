@@ -2,6 +2,11 @@
   "id": "ed-2024-12-20",
   "date": "2024-12-20T00:00:00.000Z",
   "title": "Education & Human Potential",
+  "cover": {
+    "title": "Daily Briefing • Dec 20",
+    "summary": "Education & Human Potential",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=1200"
+  },
   "articles": [
     {
       "id": "art-vr-education-2020",

@@ -2,6 +2,11 @@
   "id": "ed-2024-12-18",
   "date": "2024-12-18T00:00:00.000Z",
   "title": "Material Science & Manufacturing",
+  "cover": {
+    "title": "Daily Briefing • Dec 18",
+    "summary": "Material Science & Manufacturing",
+    "imageUrl": "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=1200"
+  },
   "articles": [
     {
       "id": "art-graphene-2018",

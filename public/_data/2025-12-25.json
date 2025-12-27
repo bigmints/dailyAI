@@ -2,6 +2,11 @@
     "id": "ed-2025-12-25",
     "date": "2025-12-25T00:00:00.000Z",
     "title": "AI Innovation Update: Browser Agents, Design-to-Code, and Strategic Infrastructure",
+    "cover": {
+        "title": "Daily Briefing • Dec 25",
+        "summary": "OpenAI releases Atlas browser, Figma integrates with Qt, and major AI infrastructure deals reshape the industry.",
+        "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200"
+    },
     "articles": [
         {
             "id": "art-openai-gpt52-2025",

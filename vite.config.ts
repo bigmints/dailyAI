@@ -6,7 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/dailyAI/',
+    base: '/',
     publicDir: 'public', // Default public assets
     server: {
       port: 3000,
@@ -25,8 +25,8 @@ export default defineConfig(({ mode }) => {
           background_color: '#ffffff',
           display: 'standalone',
           orientation: 'portrait',
-          scope: '/dailyAI/',
-          start_url: '/dailyAI/',
+          scope: '/',
+          start_url: '/',
           icons: [
             {
               src: 'pwa-192x192.png',

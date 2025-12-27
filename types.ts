@@ -15,6 +15,11 @@ export interface DailyEdition {
   date: string;
   title: string;
   summary?: string;
+  cover?: {
+    title?: string;
+    summary: string;
+    imageUrl?: string;
+  };
   author?: string;
   articles: Article[];
 }
