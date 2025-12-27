@@ -1,0 +1,32 @@
+{
+    "id": "ed-2025-12-27",
+    "date": "2025-12-27T00:00:00.000Z",
+    "title": "Daily Pulse: AI Agents & The Future of Work",
+    "cover": {
+        "title": "Daily Briefing • Dec 27",
+        "summary": "New AI agent frameworks emerge as major tech companies align on future standards.",
+        "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200"
+    },
+    "articles": [
+        {
+            "id": "art-agent-standard-2025",
+            "url": "https://example.com/ai-standards",
+            "title": "Global Tech Alliance Proposes Standard Protocol for AI Agents",
+            "shortDescription": "Top tech firms agree on a common interface for autonomous agent communication.",
+            "fullSummary": "In a historic move, leading AI companies have formed a consortium to develop the 'Universal Agent Protocol' (UAP). This standardized framework aims to allow AI agents from different providers to communicate, negotiate, and collaborate on complex tasks without human intervention. The protocol addresses security, authentication, and resource sharing, laying the groundwork for a truly interconnected AI ecosystem.",
+            "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200",
+            "date": "2025-12-27T00:00:00.000Z",
+            "category": "Technology Standards"
+        },
+        {
+            "id": "art-healthcare-ai-2025",
+            "url": "https://example.com/healthcare-ai",
+            "title": "AI Diagnostics Clear Final Regulatory Hurdle",
+            "shortDescription": "The FDA approves the first fully autonomous AI diagnostic suite for primary care.",
+            "fullSummary": "The FDA has granted approval for 'MediScan AI', a comprehensive diagnostic tool capable of autonomously diagnosing over 50 common conditions with higher accuracy than human practitioners. This approval marks a significant shift in healthcare regulation, moving from 'AI as assistant' to 'AI as practitioner' for routine screenings, potentially reducing wait times and healthcare costs dramatically.",
+            "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200",
+            "date": "2025-12-26T00:00:00.000Z",
+            "category": "Healthcare AI"
+        }
+    ]
+}
