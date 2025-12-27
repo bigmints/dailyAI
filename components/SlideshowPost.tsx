@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import { DailyEdition } from '../types';
 import { ChevronLeft, ChevronRight, Share2, MoreHorizontal, Layers, ArrowRight, ChevronRight as ChevronRightIcon } from 'lucide-react';
+import ImageWithFallback from './ImageWithFallback';
 
 interface SlideshowPostProps {
   edition: DailyEdition;
@@ -56,7 +57,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
           {/* Cover Slide */}
           <div className="flex-shrink-0 w-full h-full relative snap-start">
             <div className="absolute inset-0">
-              <img
+              <ImageWithFallback
                 src={edition.cover?.imageUrl || edition.articles[0]?.imageUrl}
                 alt="Background"
                 className="w-full h-full object-cover"
@@ -75,7 +76,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
                         {edition.cover.title}
                       </h1>
                     )}
-                    <h1 className="text-[32px] sm:text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter">
+                    <h1 className="text-[24px] sm:text-[32px] font-extrabold text-white leading-[1.1] tracking-tighter line-clamp-[6] overflow-hidden">
                       {edition.cover.summary}
                     </h1>
                   </div>
@@ -119,7 +120,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
           {/* Article Slides */}
           {edition.articles.map((article) => (
             <div key={article.id} className="flex-shrink-0 w-full h-full relative snap-start overflow-hidden">
-              <img
+              <ImageWithFallback
                 src={article.imageUrl}
                 alt={article.title}
                 className="absolute inset-0 w-full h-full object-cover"

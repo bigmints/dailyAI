@@ -5,6 +5,7 @@ import SlideshowPost from './components/SlideshowPost';
 import CurateMode from './components/CurateMode';
 import { LayoutGrid, PlusCircle, Sparkles, User, ArrowUp, Zap, Radio, Menu, X } from 'lucide-react';
 import { loadAllEditions } from './services/dataService';
+import ImageWithFallback from './components/ImageWithFallback';
 
 const App: React.FC = () => {
   const [editions, setEditions] = useState<DailyEdition[]>([]);
@@ -93,7 +94,7 @@ const App: React.FC = () => {
             setMode(AppMode.FEED);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}>
-            <img
+            <ImageWithFallback
               src={`${(import.meta as any).env.BASE_URL}logo.png`}
               alt="Pulse Logo"
               className="w-10 h-10 object-contain rounded-xl"
@@ -134,7 +135,7 @@ const App: React.FC = () => {
           setMode(AppMode.FEED);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}>
-          <img
+          <ImageWithFallback
             src={`${(import.meta as any).env.BASE_URL}logo.png`}
             alt="Pulse Logo"
             className="w-10 h-10 object-contain rounded-xl"
@@ -169,7 +170,7 @@ const App: React.FC = () => {
           <div className="flex flex-col gap-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <img
+                <ImageWithFallback
                   src={`${(import.meta as any).env.BASE_URL}logo.png`}
                   alt="Pulse Logo"
                   className="w-16 h-16 object-contain rounded-2xl"
