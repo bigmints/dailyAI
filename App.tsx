@@ -100,7 +100,7 @@ const App: React.FC = () => {
             />
             <div>
               <h1 className="text-lg font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100">Pulse</h1>
-              <p className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mt-0.5">DAILY AI NEWS</p>
+              <p className="text-[9px] font-bold text-primary-600 dark:text-primary-400 tracking-widest uppercase mt-0.5">Intelligence</p>
             </div>
           </div>
           <div className="flex flex-col gap-1">
@@ -108,7 +108,7 @@ const App: React.FC = () => {
               <button
                 key={item.label}
                 onClick={() => setMode(item.mode)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all font-bold text-sm ${mode === item.mode ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300' : 'text-[#717171] dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-[#222222] dark:hover:text-zinc-200'}`}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all font-bold text-sm ${mode === item.mode ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-300' : 'text-[#717171] dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-[#222222] dark:hover:text-zinc-200'}`}
               >
                 {item.icon}
                 {item.label}
@@ -141,7 +141,7 @@ const App: React.FC = () => {
           />
           <div>
             <h1 className="text-base font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100 leading-none">Pulse</h1>
-            <p className="text-[8px] font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mt-0.5 leading-none">Intelligence</p>
+            <p className="text-[8px] font-bold text-primary-600 dark:text-primary-400 tracking-widest uppercase mt-0.5 leading-none">Intelligence</p>
           </div>
         </div>
 
@@ -176,7 +176,7 @@ const App: React.FC = () => {
                 />
                 <div>
                   <h1 className="text-2xl font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100">Pulse</h1>
-                  <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400 tracking-widest uppercase">Curated by Gemini</p>
+                  <p className="text-xs font-bold text-primary-600 dark:text-primary-400 tracking-widest uppercase">Intelligence</p>
                 </div>
               </div>
               <button
@@ -196,7 +196,7 @@ const App: React.FC = () => {
                     setIsMenuOpen(false);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className={`flex items-center justify-between p-6 rounded-[24px] font-bold text-xl transition-all ${mode === item.mode ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' : 'text-[#717171] bg-[#f7f7f7]'}`}
+                  className={`flex items-center justify-between p-6 rounded-[24px] font-bold text-xl transition-all ${mode === item.mode ? 'bg-primary-600 text-white' : 'text-[#717171] bg-[#f7f7f7]'}`}
                 >
                   <div className="flex items-center gap-4">
                     {React.cloneElement(item.icon as React.ReactElement, { size: 28 })}
@@ -224,10 +224,10 @@ const App: React.FC = () => {
       </div>
 
       {/* Content Area */}
-      <main className="pt-24 lg:pt-16 pb-48 px-6">
+      <main className="pt-20 lg:pt-16 pb-48 px-3 lg:px-6">
         {isInitialLoading ? (
           <div className="min-h-screen flex flex-col items-center justify-center gap-6">
-            <div className="w-16 h-16 border-4 border-indigo-600/20 border-t-indigo-600 rounded-full animate-spin" />
+            <div className="w-16 h-16 border-4 border-primary-600/20 border-t-primary-600 rounded-full animate-spin" />
             <div className="text-center">
               <p className="text-lg font-bold text-[#222222] dark:text-zinc-100 mb-1">Loading Daily Editions...</p>
               <p className="text-xs text-[#717171] dark:text-zinc-500">Curating your personalized feed</p>
@@ -239,15 +239,20 @@ const App: React.FC = () => {
           </div>
         ) : (
           <div>
-            <header className="max-w-[548px] mx-auto mb-20 px-1 animate-pulse-in text-center sm:text-left">
+            <header className="max-w-[548px] mx-auto mb-8 lg:mb-20 px-1 animate-pulse-in text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start gap-2 mb-6">
-                <Sparkles size={14} className="text-indigo-500 dark:text-indigo-400" fill="currentColor" />
+                <Sparkles size={14} className="text-primary-500 dark:text-primary-400" fill="currentColor" />
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#717171] dark:text-zinc-500">
                   Current Edition • {new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
                 </p>
               </div>
-              <h2 className="text-[38px] sm:text-[52px] font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100 leading-[0.95] mb-8">
-                Good morning. <br /><span className="text-indigo-600 dark:text-indigo-400">You're up to speed.</span>
+              <h2 className="text-[38px] sm:text-[52px] font-extrabold tracking-tighter text-[#222222] dark:text-zinc-100 leading-[0.95] mb-6 lg:mb-8">
+                {(() => {
+                  const hour = new Date().getHours();
+                  if (hour < 12) return 'Good morning.';
+                  if (hour < 18) return 'Good afternoon.';
+                  return 'Good evening.';
+                })()} <br /><span className="text-primary-600 dark:text-primary-400">You're up to speed.</span>
               </h2>
               <div className="flex flex-col sm:flex-row items-center gap-4 p-5 bg-white dark:bg-zinc-900 rounded-[28px] border border-[#ebebeb] dark:border-zinc-800 shadow-sm">
                 <div className="flex -space-x-2.5">
@@ -255,12 +260,12 @@ const App: React.FC = () => {
                 </div>
                 <p className="text-[13px] text-[#717171] dark:text-zinc-400 font-bold leading-tight text-center sm:text-left">
                   <span className="text-[#222222] dark:text-zinc-200">Freshly Curated</span><br />
-                  {editions.length > 0 ? editions[0].articles.length : 0} essential insights waiting for you.
+                  {editions.length > 0 ? editions[0].articles.length : 0} essential {editions.length > 0 && editions[0].articles.length === 1 ? 'insight' : 'insights'} waiting for you.
                 </p>
               </div>
             </header>
 
-            <div className="flex flex-col gap-14">
+            <div className="flex flex-col gap-8 lg:gap-14">
               {editions.map((edition) => (
                 <SlideshowPost key={edition.id} edition={edition} />
               ))}
@@ -269,7 +274,7 @@ const App: React.FC = () => {
             <div ref={observerTarget} className="py-32 flex flex-col items-center gap-6">
               {isLoadingMore ? (
                 <div className="flex flex-col items-center gap-4">
-                  <div className="w-10 h-10 border-4 border-indigo-600/5 border-t-indigo-600 rounded-full animate-spin" />
+                  <div className="w-10 h-10 border-4 border-primary-600/5 border-t-primary-600 rounded-full animate-spin" />
                   <p className="text-[11px] font-bold uppercase tracking-widest text-[#717171]">Expanding Knowledge Base...</p>
                 </div>
               ) : (
@@ -289,7 +294,7 @@ const App: React.FC = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="fixed bottom-8 right-8 w-14 h-14 bg-white text-[#222222] rounded-[22px] shadow-airbnb flex items-center justify-center hover:scale-110 active:scale-95 transition-all border border-black/5 z-50 group overflow-hidden"
         >
-          <div className="absolute inset-0 bg-indigo-50 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+          <div className="absolute inset-0 bg-primary-50 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           <ArrowUp size={20} className="relative group-hover:-translate-y-1 transition-transform" />
         </button>
       )}
