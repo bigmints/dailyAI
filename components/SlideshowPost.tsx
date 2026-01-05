@@ -1,17 +1,23 @@
-
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { DailyEdition } from '../types';
 import { ChevronLeft, ChevronRight, Share2, MoreHorizontal, Layers, ArrowRight, ChevronRight as ChevronRightIcon } from 'lucide-react';
 import ImageWithFallback from './ImageWithFallback';
-
+import { markEditionAsRead } from '../services/readTracker';
+import SharePreviewModal from './SharePreviewModal';
 interface SlideshowPostProps {
   edition: DailyEdition;
+  onEditionRead?: () => void; // Callback when edition is marked as read
 }
 
-const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
+const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition, onEditionRead }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [showShareModal, setShowShareModal] = useState(false);
   const totalSlides = edition.articles.length + 1;
+
+  const handleShare = () => {
+    setShowShareModal(true);
+  };
 
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -19,7 +25,15 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
       const slideWidth = scrollRef.current.offsetWidth;
       if (slideWidth > 0) {
         const newActiveSlide = Math.round(scrollPosition / slideWidth);
-        if (newActiveSlide !== activeSlide) setActiveSlide(newActiveSlide);
+        if (newActiveSlide !== activeSlide) {
+          setActiveSlide(newActiveSlide);
+
+          // Mark edition as read when user views it (skip cover slide which is index 0)
+          if (newActiveSlide > 0) {
+            markEditionAsRead(edition.id);
+            onEditionRead?.();
+          }
+        }
       }
     }
   };
@@ -179,12 +193,26 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition }) => {
           {edition.author || 'Pretheesh'}
         </p>
         <div className="flex items-center gap-1">
-          <button className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors text-[#222222] dark:text-zinc-200"><Share2 size={18} /></button>
-          <button className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors text-[#222222] dark:text-zinc-200"><MoreHorizontal size={18} /></button>
+          <button
+            onClick={handleShare}
+            className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors text-[#222222] dark:text-zinc-200"
+          >
+            <Share2 size={18} />
+          </button>
+          <button className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors text-[#222222] dark:text-zinc-200">
+            <MoreHorizontal size={18} />
+          </button>
         </div>
       </div>
+
+      <SharePreviewModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        edition={edition}
+      />
     </div>
   );
 };
+
 
 export default SlideshowPost;

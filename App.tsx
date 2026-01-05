@@ -6,6 +6,9 @@ import CurateMode from './components/CurateMode';
 import { LayoutGrid, PlusCircle, Sparkles, User, ArrowUp, Zap, Radio, Menu, X } from 'lucide-react';
 import { loadAllEditions } from './services/dataService';
 import ImageWithFallback from './components/ImageWithFallback';
+import InstallPrompt from './components/InstallPrompt';
+import InstallBanner from './components/InstallBanner';
+import { getUnreadCount } from './services/readTracker';
 
 const App: React.FC = () => {
   const [editions, setEditions] = useState<DailyEdition[]>([]);
@@ -13,7 +16,14 @@ const App: React.FC = () => {
   const [mode, setMode] = useState<AppMode>(AppMode.FEED);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
   const observerTarget = useRef<HTMLDivElement>(null);
+
+  // Calculate unread count
+  const updateUnreadCount = () => {
+    const editionIds = editions.map(e => e.id);
+    setUnreadCount(getUnreadCount(editionIds));
+  };
 
   // Load editions from JSON files on mount
   useEffect(() => {
@@ -21,6 +31,9 @@ const App: React.FC = () => {
       .then(data => {
         setEditions(data);
         setIsInitialLoading(false);
+        // Calculate initial unread count
+        const editionIds = data.map(e => e.id);
+        setUnreadCount(getUnreadCount(editionIds));
       })
       .catch(error => {
         console.error('Failed to load editions:', error);
@@ -81,7 +94,6 @@ const App: React.FC = () => {
 
   const navItems = [
     { label: 'The Feed', icon: <LayoutGrid size={18} />, mode: AppMode.FEED },
-    { label: 'Curate', icon: <PlusCircle size={18} />, mode: AppMode.CURATE },
   ];
 
   return (
@@ -115,16 +127,17 @@ const App: React.FC = () => {
                 {item.label}
               </button>
             ))}
-          </div>
-          <div className="h-px bg-black/5 w-full" />
-          <div className="flex items-center justify-between cursor-pointer">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-zinc-100 rounded-full flex items-center justify-center border border-black/5">
-                <User size={14} className="text-zinc-500" />
-              </div>
-              <span className="text-xs font-bold text-[#717171]">Account</span>
-            </div>
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+
+            {/* Create a feed link */}
+            <a
+              href="https://feeds.saveaday.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all font-bold text-sm text-[#717171] dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-[#222222] dark:hover:text-zinc-200"
+            >
+              <PlusCircle size={18} />
+              Create a feed
+            </a>
           </div>
         </div>
       </div>
@@ -206,19 +219,20 @@ const App: React.FC = () => {
                   <Sparkles size={20} className={mode === item.mode ? 'opacity-100' : 'opacity-0'} />
                 </button>
               ))}
-            </div>
 
-            <div className="flex items-center justify-between p-6 bg-[#f7f7f7] rounded-[24px] border border-black/5 mt-2">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-black/5">
-                  <User size={24} className="text-zinc-500" />
+              {/* Create a feed link - Mobile */}
+              <a
+                href="https://feeds.saveaday.ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-6 rounded-[24px] font-bold text-xl transition-all text-[#717171] bg-[#f7f7f7]"
+              >
+                <div className="flex items-center gap-4">
+                  <PlusCircle size={28} />
+                  <span>Create a feed</span>
                 </div>
-                <div>
-                  <p className="text-sm font-extrabold text-[#222222]">Personal Pulse</p>
-                  <p className="text-xs font-semibold text-[#717171]">Settings & Preferences</p>
-                </div>
-              </div>
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.8)]" />
+                <div className="w-1 h-1" /> {/* Spacer to keep alignment similar */}
+              </a>
             </div>
           </div>
         </div>
@@ -253,22 +267,34 @@ const App: React.FC = () => {
                   if (hour < 12) return 'Good morning.';
                   if (hour < 18) return 'Good afternoon.';
                   return 'Good evening.';
-                })()} <br /><span className="text-primary-600 dark:text-primary-400">You're up to speed.</span>
+                })()}{' '}
+                {unreadCount === 0 ? (
+                  <><br /><span className="text-primary-600 dark:text-primary-400">You're up to speed.</span></>
+                ) : null}
               </h2>
-              <div className="flex flex-col sm:flex-row items-center gap-4 p-5 bg-white dark:bg-zinc-900 rounded-[28px] border border-[#ebebeb] dark:border-zinc-800 shadow-sm">
-                <div className="flex -space-x-2.5">
-                  {[1, 2, 3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-800" />)}
+              {unreadCount > 0 && (
+                <div className="flex flex-col sm:flex-row items-center gap-4 p-5 bg-white dark:bg-zinc-900 rounded-[28px] border border-[#ebebeb] dark:border-zinc-800 shadow-sm">
+                  <div className="flex -space-x-2.5">
+                    {[1, 2, 3].map(i => <div key={i} className="w-9 h-9 rounded-full border-[3px] border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-800" />)}
+                  </div>
+                  <p className="text-[13px] text-[#717171] dark:text-zinc-400 font-bold leading-tight text-center sm:text-left">
+                    <span className="text-[#222222] dark:text-zinc-200">Freshly Curated</span><br />
+                    {unreadCount} essential {unreadCount === 1 ? 'story' : 'stories'} waiting for you.
+                  </p>
                 </div>
-                <p className="text-[13px] text-[#717171] dark:text-zinc-400 font-bold leading-tight text-center sm:text-left">
-                  <span className="text-[#222222] dark:text-zinc-200">Freshly Curated</span><br />
-                  {editions.length > 0 ? editions[0].articles.length : 0} essential {editions.length > 0 && editions[0].articles.length === 1 ? 'insight' : 'insights'} waiting for you.
-                </p>
-              </div>
+              )}
+
+              {/* Install Banner - shown inline below Freshly Curated */}
+              <InstallBanner inline={true} />
             </header>
 
             <div className="flex flex-col gap-8 lg:gap-14">
               {editions.map((edition) => (
-                <SlideshowPost key={edition.id} edition={edition} />
+                <SlideshowPost
+                  key={edition.id}
+                  edition={edition}
+                  onEditionRead={updateUnreadCount}
+                />
               ))}
             </div>
 
@@ -299,6 +325,9 @@ const App: React.FC = () => {
           <ArrowUp size={20} className="relative group-hover:-translate-y-1 transition-transform" />
         </button>
       )}
+
+      {/* PWA Install Prompt Modal */}
+      <InstallPrompt />
     </div>
   );
 };
