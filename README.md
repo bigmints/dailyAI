@@ -58,3 +58,38 @@ This site is deployed to **GitHub Pages** using GitHub Actions:
 3. **Monitor**: Check the Actions tab for deployment status
 
 4. **Access**: Visit https://bigmints.github.io/dailyAI/ once deployed
+
+## 🤖 Automated Content Updates
+
+This repository is configured to receive content updates from the CMS via GitHub Actions.
+
+### Setup Instructions
+
+1.  **Generate a Personal Access Token (PAT)** (optional, if default `GITHUB_TOKEN` permissions aren't enough, but usually they are):
+    - Ensure the token has `repo` scope.
+
+2.  **Configure CMS Webhook**:
+    - **URL**: `https://api.github.com/repos/[YOUR_USENAME]/[REPO_NAME]/dispatches`
+    - **Method**: `POST`
+    - **Headers**:
+        - `Accept`: `application/vnd.github.v3+json`
+        - `Authorization`: `Bearer YOUR_GITHUB_PAT`
+    - **Body (JSON)**:
+        ```json
+        {
+          "event_type": "publish_content",
+          "client_payload": {
+            "success": true,
+            "data": [ ... ]
+          }
+        }
+        ```
+
+### How it works
+1.  CMS sends `repository_dispatch` event.
+2.  GitHub Action `content-update.yml` triggers.
+3.  It runs `scripts/process-payload.js` which:
+    - Parses the JSON.
+    - Saves new editions to `public/_data/`.
+    - Updates `public/_data/index.json`.
+4.  The action commits and pushes the changes, triggering a fresh deployment.

@@ -5,7 +5,8 @@ import { DailyEdition } from '../types';
  */
 
 // List of available dates (in production, this could be generated or fetched from an index)
-const AVAILABLE_DATES = [
+// List of available dates (Fallback)
+const FALLBACK_DATES = [
     '2025-12-27',
     '2025-12-25',
     '2024-12-25',
@@ -42,8 +43,20 @@ export async function loadEdition(date: string): Promise<DailyEdition | null> {
  * Load all available editions
  */
 export async function loadAllEditions(): Promise<DailyEdition[]> {
+    let dates = FALLBACK_DATES;
+
+    try {
+        const baseUrl = (import.meta as any).env?.BASE_URL || '/';
+        const response = await fetch(`${baseUrl}_data/index.json?v=${Date.now()}`); // cache buster
+        if (response.ok) {
+            dates = await response.json();
+        }
+    } catch (error) {
+        console.error('Failed to load edition index, using fallback', error);
+    }
+
     const editions = await Promise.all(
-        AVAILABLE_DATES.map(date => loadEdition(date))
+        dates.map(date => loadEdition(date))
     );
 
     // Filter out any failed loads and sort by date (newest first)
@@ -53,8 +66,8 @@ export async function loadAllEditions(): Promise<DailyEdition[]> {
 }
 
 /**
- * Get list of available dates
+ * Get list of available dates (Returns fallback, mainly for dev reference now)
  */
 export function getAvailableDates(): string[] {
-    return [...AVAILABLE_DATES];
+    return [...FALLBACK_DATES];
 }
