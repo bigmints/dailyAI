@@ -65,8 +65,10 @@ This repository is configured to receive content updates from the CMS via GitHub
 
 ### Setup Instructions
 
-1.  **Generate a Personal Access Token (PAT)** (optional, if default `GITHUB_TOKEN` permissions aren't enough, but usually they are):
-    - Ensure the token has `repo` scope.
+1.  **Generate a Personal Access Token (PAT)**:
+    - Go to GitHub Settings > Developer Settings > Personal Access Tokens > Tokens (Classic).
+    - Generate new token with `repo` scope.
+    - **Important**: Go to your Repository Settings > Secrets > Actions. Add a new secret named `PAT` with this token value. This is required for the automation to trigger a deployment.
 
 2.  **Configure CMS Webhook**:
     - **URL**: `https://api.github.com/repos/[YOUR_USENAME]/[REPO_NAME]/dispatches`
