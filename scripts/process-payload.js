@@ -30,6 +30,9 @@ function processPayload() {
         // Validate basic structure
         if (!payload.data || !Array.isArray(payload.data)) {
             console.error('Invalid payload: missing "data" array');
+            console.error('Received Payload Type:', typeof payload);
+            console.error('Received Payload Keys:', Object.keys(payload));
+            console.error('Full Payload Preview:', JSON.stringify(payload, null, 2).substring(0, 500));
             process.exit(1);
         }
 
