@@ -34,3 +34,4 @@ jobs:
         with:
           commit_message: "chore: Auto-update content from CMS"
           file_pattern: 'public/_data/*.json'
+          token: ${{ secrets.PAT }}
