@@ -27,12 +27,15 @@ function processPayload() {
         const rawData = fs.readFileSync(payloadPath, 'utf8');
         const payload = JSON.parse(rawData);
 
-        // Validate basic structure
-        if (!payload.data || !Array.isArray(payload.data)) {
-            console.error('Invalid payload: missing "data" array');
-            console.error('Received Payload Type:', typeof payload);
+        // Normalize data to array
+        let items = [];
+        if (Array.isArray(payload.data)) {
+            items = payload.data;
+        } else if (payload.data && typeof payload.data === 'object') {
+            items = [payload.data];
+        } else {
+            console.error('Invalid payload: "data" is missing or invalid type');
             console.error('Received Payload Keys:', Object.keys(payload));
-            console.error('Full Payload Preview:', JSON.stringify(payload, null, 2).substring(0, 500));
             process.exit(1);
         }
 
@@ -40,9 +43,20 @@ function processPayload() {
         let errors = 0;
 
         // 3. Iterate through editions
-        payload.data.forEach(item => {
-            // Only process completed items
-            if (item.status !== 'completed') {
+        items.forEach(item => {
+            // Only process completed items (check both status and existence of output)
+            // Note: Single payload might not have 'status' field at root if it's just the object?
+            // The log showed: "data": { "createdAt": ..., "id": ..., "inputs": ..., "output": ... }
+            // It didn't show "status" in the preview, but the user's previous JSON example had it.
+            // Let's check if output exists.
+
+            if (item.status && item.status !== 'completed') {
+                return;
+            }
+
+            // If output is missing, skip
+            if (!item.output) {
+                console.warn(`Skipping item ${item.id}: missing output`);
                 return;
             }
 
