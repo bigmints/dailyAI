@@ -1,0 +1,52 @@
+{
+  "id": "AI-CURATION-2026-WK01",
+  "date": "2026-01-06T00:00:00.000Z",
+  "title": "AI In Focus",
+  "cover": {
+    "title": "Daily Briefing • Jan 06",
+    "summary": "AI In Focus",
+    "imageUrl": "https://images.unsplash.com/photo-1752451399417-eb6e072269bb?fm=jpg&q=60&w=3000"
+  },
+  "articles": [
+    {
+      "id": "art-figma-gemini-2026",
+      "url": "https://www.techloy.com/figma-adds-long-requested-ai-editing-tools-that-cut-out-the-need-for-photoshop-and-canva/",
+      "title": "Figma Integrates Google Gemini: Native Canvas AI Edits Signal Photoshop Displacement",
+      "shortDescription": "Figma has introduced AI-powered Erase, Isolate, and Expand tools directly on the design canvas, powered by Gemini 2.5 Flash and OpenAI's gpt-image-1.",
+      "fullSummary": "Figma has introduced AI-powered Erase, Isolate, and Expand tools directly on the design canvas, powered by Gemini 2.5 Flash and OpenAI's gpt-image-1. This update reduces 'Make Image' latency by 50% and targets the removal of visual friction by keeping image manipulation entirely within the collaborative environment. For UX_Design, this eliminates context-switching to external photo editors and shifts focus from technical orchestration to high-level visual intent. For Product_Management, it speeds up the prototyping cycle by 50% and introduces new considerations for credit-based AI consumption economics. For Engineering, it leverages multi-model APIs (Gemini/GPT/Titan) to offer designers visual flexibility within a single interface.",
+      "imageUrl": "https://www.googlecloudpresscorner.com/2025-10-09-Figma-and-Google-Cloud-Team-Up-to-Empower-Next-Generation-of-Creative-Builders/image/figma.jpg",
+      "date": "2026-01-06T01:00:00.000Z",
+      "category": "UX Design"
+    },
+    {
+      "id": "art-microsoft-strategy-2026",
+      "url": "https://news.microsoft.com/source/features/ai/whats-next-in-ai-7-trends-to-watch-in-2026/",
+      "title": "Microsoft Shifts Strategy: From Standalone Models to Orchestrated Systems",
+      "shortDescription": "CEO Satya Nadella has articulated a 2026 vision focused on 'AI systems' over 'AI models,' treating AI as a 'cognitive amplifier' for human potential.",
+      "fullSummary": "CEO Satya Nadella has articulated a 2026 vision focused on 'AI systems' over 'AI models,' treating AI as a 'cognitive amplifier' for human potential. This strategic reset emphasizes engineering 'rich scaffolds' that orchestrate memory, tools, and multiple agents to move past the 'AI slop' novelty phase. For Product_Management, this requires a pivot from feature-based roadmaps to systemic orchestration that addresses the 'model overhang' gap in organizational adoption. For UX_Design, it demands the creation of 'Theory of Mind' frameworks where interfaces adapt to the user's cognitive state and augmented capabilities. For Engineering, it increases complexity in system architecture, requiring robust governance for master agents that coordinate specialized sub-agents.",
+      "imageUrl": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/media/ai-agent-orchestration-patterns/sequential-orchestration.png",
+      "date": "2026-01-06T02:00:00.000Z",
+      "category": "Product Management"
+    },
+    {
+      "id": "art-openai-disney-2026",
+      "url": "https://openai.com/index/disney-sora-agreement/",
+      "title": "OpenAI and Disney Landmark Deal: Sora Gains Multi-Brand Licensed IP",
+      "shortDescription": "Disney has invested $1 billion in OpenAI as part of a three-year deal to bring over 200 characters from Marvel, Pixar, and Star Wars to the Sora video platform.",
+      "fullSummary": "Disney has invested $1 billion in OpenAI as part of a three-year deal to bring over 200 characters from Marvel, Pixar, and Star Wars to the Sora video platform. This partnership establishes new standards for responsible AI use in creative storytelling and fan engagement while maintaining creator rights. For Engineering, this means a scale-up of video generation infrastructure through 6-gigawatt AMD partnerships to handle massive fan-inspired creative output. For Product_Management, it validates the content-licensing model for GenAI, creating a blueprint for IP owners to monetize characters within AI ecosystems safely. For UX_Design, it requires the design of 'Guardrail UX' to ensure fan-generated content remains within age-appropriate and brand-safe bounds.",
+      "imageUrl": "https://i.amz.mshcdn.com/C5A2574A-949F-49FF-8664-969855CDA542/1x1:1/960x960/2026/01/06/6d/c5a2574a-949f-49ff-8664-969855cda542.jpg",
+      "date": "2026-01-06T03:00:00.000Z",
+      "category": "AI Strategy"
+    },
+    {
+      "id": "art-amazon-alexa-2026",
+      "url": "https://www.pymnts.com/amazon/2026/amazon-brings-alexa-web-rolls-out-fire-tv-bee-updates-ces/",
+      "title": "Amazon Alexa.com Launch: Browser-Based Agentic Commerce Interface",
+      "shortDescription": "Amazon has expanded Alexa+ to the web and a redesigned mobile app, positioning it as an 'agent-forward' experience capable of completing complex tasks across thousands of services.",
+      "fullSummary": "Amazon has expanded Alexa+ to the web and a redesigned mobile app, positioning it as an 'agent-forward' experience capable of completing complex tasks across thousands of services. New integrations with Expedia and Yelp allow for automated meal planning, shopping, and appointment booking from a unified chat interface. For Product_Management, this signals the arrival of 'Agentic Commerce' as the default shopping interface, moving competition from SEO to 'Agent Influence'. For Engineering, it demonstrates the integration of multi-step task completion and 'Personal Context' cross-referencing in browser-based AI environments. For UX_Design, it focuses on 'Voice-to-Transaction' flows and conversational task management that reduces the cognitive load of digital life admin.",
+      "imageUrl": "https://image.shutterstock.com/image-photo/businessmen-use-agentic-ai-artificial-600w-2286195393.jpg",
+      "date": "2026-01-06T04:00:00.000Z",
+      "category": "Product Management"
+    }
+  ]
+}
