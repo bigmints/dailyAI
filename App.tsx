@@ -14,10 +14,8 @@ const App: React.FC = () => {
   const [editions, setEditions] = useState<DailyEdition[]>([]);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [mode, setMode] = useState<AppMode>(AppMode.FEED);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
-  const observerTarget = useRef<HTMLDivElement>(null);
 
   // Calculate unread count
   const updateUnreadCount = () => {
@@ -41,47 +39,7 @@ const App: React.FC = () => {
       });
   }, []);
 
-  const loadMoreEditions = useCallback(async () => {
-    if (isLoadingMore) return;
-    setIsLoadingMore(true);
 
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    const olderDate = new Date();
-    olderDate.setDate(olderDate.getDate() - editions.length);
-
-    const newEdition: DailyEdition = {
-      id: `ed-${Math.floor(Math.random() * 90) + 10}`,
-      date: olderDate.toISOString(),
-      title: 'Material Science & Pure Design',
-      articles: [
-        {
-          id: `a-${Math.random()}`,
-          title: 'Design as a Tool for Focus',
-          url: 'https://example.com',
-          shortDescription: 'Why simplicity remains the ultimate sophistication in hardware development.',
-          fullSummary: '...',
-          imageUrl: `https://picsum.photos/seed/${Math.random()}/1200/1500`,
-          category: 'Philosophy',
-          date: olderDate.toISOString()
-        }
-      ]
-    };
-
-    setEditions(prev => [...prev, newEdition]);
-    setIsLoadingMore(false);
-  }, [editions.length, isLoadingMore]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting && mode === AppMode.FEED) loadMoreEditions();
-      },
-      { threshold: 0.1 }
-    );
-    if (observerTarget.current) observer.observe(observerTarget.current);
-    return () => observer.disconnect();
-  }, [loadMoreEditions, mode]);
 
   const handleArticleAdded = (newArticle: Article) => {
     setEditions(prev => {
@@ -298,18 +256,17 @@ const App: React.FC = () => {
               ))}
             </div>
 
-            <div ref={observerTarget} className="py-32 flex flex-col items-center gap-6">
-              {isLoadingMore ? (
-                <div className="flex flex-col items-center gap-4">
-                  <div className="w-10 h-10 border-4 border-primary-600/5 border-t-primary-600 rounded-full animate-spin" />
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-[#717171]">Expanding Knowledge Base...</p>
+            <div className="py-32 flex flex-col items-center gap-6">
+              <div className="flex flex-col items-center text-center max-w-xs animate-fade-in-up">
+                <div className="w-12 h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center mb-6 text-zinc-400 dark:text-zinc-600">
+                  <LayoutGrid size={24} />
                 </div>
-              ) : (
-                <div className="flex flex-col items-center opacity-10">
-                  <LayoutGrid size={24} className="mb-2" />
-                  <p className="text-[10px] font-bold uppercase tracking-widest">Knowledge Stream End</p>
-                </div>
-              )}
+                <h3 className="text-xl font-extrabold text-[#222222] dark:text-zinc-100 tracking-tight mb-2">You're caught up.</h3>
+                <p className="text-[13px] font-bold text-[#717171] dark:text-zinc-500 leading-relaxed uppercase tracking-widest">
+                  End of Knowledge Stream
+                </p>
+                <div className="mt-10 flex h-1 w-12 rounded-full bg-zinc-200 dark:bg-zinc-800" />
+              </div>
             </div>
           </div>
         )}

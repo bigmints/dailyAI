@@ -1,32 +1,32 @@
 {
+  "id": "PULSE-2026-01-05",
+  "date": "2026-01-05",
+  "title": "AI Coding Agents & Next-Gen Models",
+  "cover": {
+    "title": "AI coding agents level up: Jules and Claude 4",
+    "summary": "This edition spotlights two major moves in AI-assisted development: Google Labs’ Jules, an asynchronous autonomous coding agent, and Anthropic’s Claude 4 family.",
+    "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Jules_Thumbnail.width-1300.png"
+  },
   "articles": [
     {
-      "category": "AI & Developers",
-      "date": "2026-01-05",
-      "fullSummary": "Google highlights Jules as an autonomous, asynchronous AI coding agent aimed at helping developers make progress on coding tasks without requiring constant, real-time prompting. The announcement positions Jules as a “build with” assistant that can take on work in the background, supporting developer workflows and reducing the overhead of manual iteration. The post frames Jules within Google Labs’ experimentation around practical AI tools for software creation and collaboration.",
-      "id": "article-1-jules-google-labs",
-      "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Jules_Thumbnail.width-1300.png",
-      "shortDescription": "Google Labs introduces Jules, an asynchronous coding agent designed to help developers build and iterate with less back-and-forth.",
+      "id": "art-20260105-jules",
+      "date": "2026-01-05T08:00:00.000Z",
+      "url": "https://blog.google/technology/google-labs/jules/",
       "title": "Jules: Google’s autonomous AI coding agent",
-      "url": "https://blog.google/technology/google-labs/jules/"
+      "shortDescription": "Google Labs introduces Jules, an asynchronous coding agent designed to help developers build and iterate with less back-and-forth.",
+      "fullSummary": "Google highlights Jules as an autonomous, asynchronous AI coding agent aimed at helping developers make progress on coding tasks without requiring constant, real-time prompting. The announcement positions Jules as a “build with” assistant that can take on work in the background, supporting developer workflows and reducing the overhead of manual iteration.",
+      "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Jules_Thumbnail.width-1300.png",
+      "category": "AI & Developers"
     },
     {
-      "category": "AI Models",
-      "date": "2025-05-22",
-      "fullSummary": "Anthropic announces Claude Opus 4 and Claude Sonnet 4 as its next-generation models, emphasizing improvements in coding performance, advanced reasoning, and AI agent workflows. The release includes “extended thinking with tool use” (beta), enabling the models to alternate between reasoning and tools like web search, plus parallel tool use and more precise instruction following. Anthropic also expands developer tooling: Claude Code becomes generally available with GitHub Actions support and integrations for VS Code and JetBrains, and the API gains new capabilities including a code execution tool, an MCP connector, a Files API, and prompt caching for up to one hour. Both models are described as hybrid, offering near-instant responses as well as a deeper extended-thinking mode, with availability across Claude plans and Sonnet 4 also offered to free users.",
-      "id": "article-2-anthropic-claude-4",
-      "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20HeadShapes&backgroundColor=clay",
-      "shortDescription": "Anthropic launches Claude Opus 4 and Claude Sonnet 4 with stronger coding, advanced reasoning, and agent-focused capabilities.",
+      "id": "art-20250522-claude4",
+      "date": "2025-05-22T08:00:00.000Z",
+      "url": "https://www.anthropic.com/news/claude-4",
       "title": "Introducing Claude 4 (Opus 4 and Sonnet 4)",
-      "url": "https://www.anthropic.com/news/claude-4"
+      "shortDescription": "Anthropic launches Claude Opus 4 and Claude Sonnet 4 with stronger coding, advanced reasoning, and agent-focused capabilities.",
+      "fullSummary": "Anthropic announces Claude Opus 4 and Claude Sonnet 4 as its next-generation models, emphasizing improvements in coding performance, advanced reasoning, and AI agent workflows. The release includes “extended thinking with tool use” (beta), enabling the models to alternate between reasoning and tools like web search, plus parallel tool use and more precise instruction following.",
+      "imageUrl": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20HeadShapes&backgroundColor=clay",
+      "category": "AI Models"
     }
-  ],
-  "cover": {
-    "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Jules_Thumbnail.width-1300.png",
-    "summary": "This edition spotlights two major moves in AI-assisted development: Google Labs’ Jules, an asynchronous autonomous coding agent, and Anthropic’s Claude 4 family, which emphasizes stronger coding, advanced reasoning, tool use during extended thinking, and expanded developer integrations.",
-    "title": "AI coding agents level up: Jules and Claude 4"
-  },
-  "date": "2026-01-05",
-  "id": "newsletter-2026-01-05-ai-dev-tools",
-  "title": "AI Coding Agents & Next-Gen Models"
+  ]
 }

@@ -1,26 +1,26 @@
 
 export interface Article {
-  id: string;
-  url: string;
-  title: string;
-  shortDescription: string;
-  fullSummary: string;
-  imageUrl: string;
-  date: string;
-  category: string;
+  id: string; // unique article id
+  url: string; // external link to the full article
+  title: string; // Headline, max 80 chars
+  shortDescription: string; // Brief teaser, max 120 chars
+  fullSummary: string; // Detailed summary of the article, max 400 chars
+  imageUrl: string; // URL to the article image
+  date: string; // ISO 8601 or YYYY-MM-DD
+  category: string; // e.g., 'AI Engineering', 'Product Design'
 }
 
 export interface DailyEdition {
-  id: string;
-  date: string;
-  title: string;
-  summary?: string;
+  id: string; // unique identifier, e.g., 'ed-2025-12-27'
+  date: string; // ISO 8601 or YYYY-MM-DD
+  title: string; // Main title of the edition, max 60 chars
+  summary?: string; // Optional: Alternative summary if cover is missing
   cover?: {
-    title?: string;
-    summary: string;
-    imageUrl?: string;
+    title?: string; // Optional: Title for the intro slide, max 40 chars
+    summary: string; // Summary text for the intro slide, max 180 chars
+    imageUrl?: string; // Optional: Background image URL for the intro slide
   };
-  author?: string;
+  author?: string; // Optional: Author name, defaults to 'Pretheesh'
   articles: Article[];
 }
 
