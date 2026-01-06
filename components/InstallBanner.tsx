@@ -137,7 +137,7 @@ const InstallBanner: React.FC<InstallBannerProps> = ({ inline = false }) => {
     );
 
     if (inline) {
-        return <div className="mt-6">{bannerContent}</div>;
+        return <div className="mt-4">{bannerContent}</div>;
     }
 
     return (

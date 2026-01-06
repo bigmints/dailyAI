@@ -254,7 +254,7 @@ const App: React.FC = () => {
           </div>
         ) : (
           <div>
-            <header className="max-w-[548px] mx-auto mb-8 lg:mb-20 px-1 animate-pulse-in text-center sm:text-left">
+            <header className="max-w-[548px] mx-auto mb-8 lg:mb-10 px-1 animate-pulse-in text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start gap-2 mb-6">
                 <Sparkles size={14} className="text-primary-500 dark:text-primary-400" fill="currentColor" />
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#717171] dark:text-zinc-500">
