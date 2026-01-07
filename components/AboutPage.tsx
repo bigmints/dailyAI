@@ -96,7 +96,7 @@ const AboutPage: React.FC = () => {
                                         onClick={() => Analytics.trackEvent('about_link_click', 'engagement', 'portfolio')}
                                         className="group/link inline-flex items-center gap-3 px-10 py-4 bg-white text-black rounded-full font-black text-[13px] uppercase tracking-wider hover:bg-zinc-100 transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)]"
                                     >
-                                        <span>Visit Portfolio</span>
+                                        <span>Visit My Website</span>
                                         <ExternalLink size={16} className="transition-transform group-hover/link:translate-x-1" />
                                     </a>
                                 </div>
@@ -113,10 +113,10 @@ const AboutPage: React.FC = () => {
                                 <div className="space-y-4">
                                     <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-3xl border border-white/10 text-white/80 text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
                                         <Sparkles size={12} />
-                                        <span>Experiments</span>
+                                        <span>Playground</span>
                                     </div>
                                     <h2 className="text-[32px] sm:text-[38px] font-black text-white leading-[1.1] tracking-tighter">
-                                        Building in Public
+                                        AI & Experiments
                                     </h2>
                                 </div>
 
