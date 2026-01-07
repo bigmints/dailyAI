@@ -32,5 +32,6 @@ export interface AppState {
 
 export enum AppMode {
   FEED = 'FEED',
-  CURATE = 'CURATE'
+  CURATE = 'CURATE',
+  ABOUT = 'ABOUT'
 }

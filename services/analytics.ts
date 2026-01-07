@@ -44,5 +44,8 @@ export const Analytics = {
 
     // Feedback
     trackEditionFeedback: (editionId: string, sentiment: 'like' | 'dislike') =>
-        trackEvent('edition_feedback', 'engagement', `${editionId}: ${sentiment}`)
+        trackEvent('edition_feedback', 'engagement', `${editionId}: ${sentiment}`),
+
+    // Generic event tracking
+    trackEvent
 };

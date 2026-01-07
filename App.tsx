@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Article, DailyEdition, AppMode } from './types';
 import SlideshowPost from './components/SlideshowPost';
 import CurateMode from './components/CurateMode';
+import AboutPage from './components/AboutPage';
 import { LayoutGrid, PlusCircle, Sparkles, User, ArrowUp, Zap, Radio, Menu, X } from 'lucide-react';
 import { loadAllEditions } from './services/dataService';
 import ImageWithFallback from './components/ImageWithFallback';
@@ -56,6 +57,8 @@ const App: React.FC = () => {
 
   const navItems = [
     { label: 'The Feed', icon: <LayoutGrid size={18} />, mode: AppMode.FEED },
+    { label: 'Curate', icon: <Sparkles size={18} />, mode: AppMode.CURATE },
+    { label: 'About', icon: <User size={18} />, mode: AppMode.ABOUT }
   ];
 
   return (
@@ -217,6 +220,10 @@ const App: React.FC = () => {
         ) : mode === AppMode.CURATE ? (
           <div className="max-w-xl mx-auto pt-10">
             <CurateMode onArticleAdded={handleArticleAdded} />
+          </div>
+        ) : mode === AppMode.ABOUT ? (
+          <div className="max-w-[548px] mx-auto pt-10">
+            <AboutPage />
           </div>
         ) : (
           <div>
