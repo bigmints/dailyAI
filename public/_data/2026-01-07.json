@@ -1,0 +1,54 @@
+{
+    "id": "PULSE-2026-01-07",
+    "date": "2026-01-07",
+    "title": "AI tools discovery for this week",
+    "author": "Pretheesh",
+    "summary": "A deep dive into Google's latest AI orchestration and creative toolsets, focusing on democratization of app development, video storytelling, and personalized visual commerce.",
+    "cover": {
+        "title": "Google's AI Creative Frontier",
+        "summary": "From no-code mini-apps to TikTok-style AI shopping, Google's 2026 roadmap prioritizes agentic workflows and immersive media generation across Workspace and Labs.",
+        "imageUrl": "https://labs.google/static/images/opal-hero.jpg"
+    },
+    "articles": [
+        {
+            "id": "art-20260107-opal",
+            "date": "2026-01-07T09:00:00.000Z",
+            "url": "https://developers.googleblog.com/introducing-opal/",
+            "title": "Opal: Orchestrating AI Mini-Apps via Natural Language",
+            "shortDescription": "Google Labs debuts Opal, a no-code environment for building and sharing chained AI workflows.",
+            "fullSummary": "Engineering: Utilizes a graph-based architecture to chain LLM calls and tool APIs. UX_Design: Employs a 'vibe coding' interface where natural language generates visual nodes. Product_Management: Shortens the MVP cycle by allowing non-technical stakeholders to build functional internal tools and validated prototypes in minutes, decentralizing the software development lifecycle.",
+            "imageUrl": "https://developers.googleblog.com/introducing-opal/hero.png",
+            "category": "Engineering"
+        },
+        {
+            "id": "art-20260107-vids",
+            "date": "2026-01-07T09:15:00.000Z",
+            "url": "https://workspace.google.com/products/vids/",
+            "title": "Google Vids: AI-Native Video Production for Enterprise",
+            "shortDescription": "Vids integrates Gemini and Veo 3 to transform documents into collaborative, cinematic video assets.",
+            "fullSummary": "Engineering: Leverages Veo 3 for high-fidelity 8-second clip generation and native audio sync. UX_Design: Bridges the gap between slides and video editing with a timeline-free, storyboard-first approach. Product_Management: Enhances async communication by enabling teams to generate high-quality internal training and project updates without professional production overhead.",
+            "imageUrl": "https://workspace.google.com/products/vids/vids-ui.jpg",
+            "category": "UX Design"
+        },
+        {
+            "id": "art-20260107-doppl",
+            "date": "2026-01-07T09:30:00.000Z",
+            "url": "https://blog.google/technology/google-labs/doppl/",
+            "title": "Doppl: Virtual Try-On and AI-Generated Fashion Feeds",
+            "shortDescription": "Doppl introduces an AI-only shoppable discovery feed, bypassing influencers for digital twin modeling.",
+            "fullSummary": "Engineering: Implements 3D avatar mapping and diffusion-based garment transfer on user photos. UX_Design: Adopts a vertically scrolling 'TikTok' pattern populated entirely by synthetic media. Product_Management: Shifts the e-commerce funnel from social discovery to algorithmic personalization, reducing production costs for retailers by automating lifestyle photography.",
+            "imageUrl": "https://blog.google/technology/google-labs/doppl/fashion-feed.jpg",
+            "category": "Market News"
+        },
+        {
+            "id": "art-20260107-whisk",
+            "date": "2026-01-07T09:45:00.000Z",
+            "url": "https://blog.google/technology/google-labs/whisk/",
+            "title": "Whisk: Image-to-Video Remixing for Rapid Prototyping",
+            "shortDescription": "Whisk Animate enables image-centric prompting to generate cinematic visuals via Veo 2/3.",
+            "fullSummary": "Engineering: Supports 'Precise Reference' mode for high-fidelity asset consistency across generations. UX_Design: Simplifies the creative loop using 'dice roll' randomization and seed locking for character stability. Product_Management: Enables rapid creative iteration for marketers and designers, allowing for 10x output speed in generating ad variants and social content.",
+            "imageUrl": "https://blog.google/technology/google-labs/whisk/remix-ui.jpg",
+            "category": "AI Strategy"
+        }
+    ]
+}
