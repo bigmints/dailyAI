@@ -9,6 +9,7 @@ import ImageWithFallback from './components/ImageWithFallback';
 import InstallPrompt from './components/InstallPrompt';
 import InstallBanner from './components/InstallBanner';
 import { getUnreadCount } from './services/readTracker';
+import { Analytics } from './services/analytics';
 
 const App: React.FC = () => {
   const [editions, setEditions] = useState<DailyEdition[]>([]);
@@ -32,6 +33,9 @@ const App: React.FC = () => {
         // Calculate initial unread count
         const editionIds = data.map(e => e.id);
         setUnreadCount(getUnreadCount(editionIds));
+
+        // Track app load
+        Analytics.trackAppLoad();
       })
       .catch(error => {
         console.error('Failed to load editions:', error);
@@ -78,7 +82,10 @@ const App: React.FC = () => {
             {navItems.map((item) => (
               <button
                 key={item.label}
-                onClick={() => setMode(item.mode)}
+                onClick={() => {
+                  setMode(item.mode);
+                  Analytics.trackModeChange(item.mode);
+                }}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all font-bold text-sm ${mode === item.mode ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-300' : 'text-[#717171] dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-[#222222] dark:hover:text-zinc-200'}`}
               >
                 {item.icon}
@@ -165,6 +172,7 @@ const App: React.FC = () => {
                   key={item.label}
                   onClick={() => {
                     setMode(item.mode);
+                    Analytics.trackModeChange(item.mode);
                     setIsMenuOpen(false);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}

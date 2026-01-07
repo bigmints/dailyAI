@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { generateArticleData, generateHeroImage } from '../services/geminiService';
 import { Article } from '../types';
 import { Loader2, Sparkles, Plus, AlertCircle } from 'lucide-react';
+import { Analytics } from '../services/analytics';
 
 interface CurateModeProps {
   onArticleAdded: (article: Article) => void;
@@ -31,6 +32,7 @@ const CurateMode: React.FC<CurateModeProps> = ({ onArticleAdded }) => {
       };
 
       onArticleAdded(completeArticle);
+      Analytics.trackArticleCurated(url);
       setUrl('');
     } catch (err) {
       console.error(err);

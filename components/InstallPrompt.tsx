@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Download, X, Share, Plus, Square, Smartphone } from 'lucide-react';
+import { Analytics } from '../services/analytics';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -46,7 +47,8 @@ const InstallPrompt: React.FC = () => {
 
     // Listen for successful install
     window.addEventListener('appinstalled', () => {
-      setShowModal(false);
+      // This event fires after the app is successfully installed.
+      Analytics.trackInstallPrompt('accepted');
       setDeferredPrompt(null);
     });
 

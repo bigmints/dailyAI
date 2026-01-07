@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Download, X, ExternalLink } from 'lucide-react';
+import { Download, Zap, X, ExternalLink } from 'lucide-react';
+import { Analytics } from '../services/analytics';
 
 interface BeforeInstallPromptEvent extends Event {
     prompt: () => Promise<void>;
@@ -82,6 +83,7 @@ const InstallBanner: React.FC<InstallBannerProps> = ({ inline = false }) => {
     const handleDismissBanner = () => {
         setShowBanner(false);
         localStorage.setItem('installBannerDismissed', 'true');
+        Analytics.trackInstallBannerClick();
     };
 
     if (!showBanner) {
