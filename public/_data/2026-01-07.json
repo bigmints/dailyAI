@@ -49,6 +49,16 @@
             "fullSummary": "Engineering: Supports 'Precise Reference' mode for high-fidelity asset consistency across generations. UX_Design: Simplifies the creative loop using 'dice roll' randomization and seed locking for character stability. Product_Management: Enables rapid creative iteration for marketers and designers, allowing for 10x output speed in generating ad variants and social content.",
             "imageUrl": "https://blog.google/technology/google-labs/whisk/remix-ui.jpg",
             "category": "AI Strategy"
+        },
+        {
+            "id": "art-20260107-stitch",
+            "date": "2026-01-07T09:20:00.000Z",
+            "url": "https://stitch.withgoogle.com/",
+            "title": "Stitch: Semantic Video Compositing and Sequencing",
+            "shortDescription": "Stitch allows creators to seamlessly blend AI-generated video clips into cohesive narrative sequences.",
+            "fullSummary": "Engineering: Focuses on frame-to-frame temporal consistency using latent space interpolation. UX_Design: Simplifies the 'stitching' of disparate AI clips through a unified semantic timeline. Product_Management: Targets the creator economy by reducing the friction of assembly-line content production, moving from single-prompt clips to automated long-form narrative generation.",
+            "imageUrl": "https://stitch.withgoogle.com/static/og-image.jpg",
+            "category": "Engineering"
         }
     ]
 }
