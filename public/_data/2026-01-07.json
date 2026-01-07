@@ -54,8 +54,8 @@
             "id": "art-20260107-stitch",
             "date": "2026-01-07T09:20:00.000Z",
             "url": "https://stitch.withgoogle.com/",
-            "title": "Stitch: Semantic Video Compositing and Sequencing",
-            "shortDescription": "Stitch allows creators to seamlessly blend AI-generated video clips into cohesive narrative sequences.",
+            "title": "Stitch: Design at the speed of AI",
+            "shortDescription": "Transform ideas into Ul designs for mobile and web",
             "fullSummary": "Engineering: Focuses on frame-to-frame temporal consistency using latent space interpolation. UX_Design: Simplifies the 'stitching' of disparate AI clips through a unified semantic timeline. Product_Management: Targets the creator economy by reducing the friction of assembly-line content production, moving from single-prompt clips to automated long-form narrative generation.",
             "imageUrl": "https://stitch.withgoogle.com/static/og-image.jpg",
             "category": "UX Design"
