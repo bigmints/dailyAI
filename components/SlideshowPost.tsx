@@ -70,7 +70,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition, onEditionRead })
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex h-full overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-pointer"
+          className="flex h-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory no-scrollbar cursor-pointer"
         >
           {/* Cover Slide */}
           <div className="flex-shrink-0 w-full h-full relative snap-start">
@@ -80,38 +80,37 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition, onEditionRead })
                 alt="Background"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30" />
             </div>
 
             <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
-
               <div className="mb-10">
                 {edition.cover ? (
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-5">
                     {edition.cover.title && (
-                      <h1 className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em]">
+                      <h1 className="text-[12px] font-bold text-white/50 uppercase tracking-[0.3em] animate-fade-in">
                         {edition.cover.title}
                       </h1>
                     )}
-                    <h1 className="text-[24px] sm:text-[32px] font-extrabold text-white leading-[1.1] tracking-tighter line-clamp-[6] overflow-hidden">
+                    <h1 className="text-[28px] sm:text-[36px] font-black text-white leading-[1.1] tracking-tighter line-clamp-[6]">
                       {edition.cover.summary}
                     </h1>
                   </div>
                 ) : edition.summary ? (
-                  <h1 className="text-[32px] sm:text-[40px] font-extrabold text-white leading-[1.05] tracking-tighter">
+                  <h1 className="text-[36px] sm:text-[44px] font-black text-white leading-[1] tracking-tighter">
                     {edition.summary}
                   </h1>
                 ) : (
-                  <div className="flex flex-col gap-4">
-                    <h1 className="text-[11px] font-bold text-white/60 uppercase tracking-[0.2em]">
+                  <div className="flex flex-col gap-6">
+                    <h1 className="text-[12px] font-bold text-white/50 uppercase tracking-[0.3em]">
                       Briefing • {new Date(edition.date).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
                     </h1>
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-4">
                       {edition.articles.slice(0, 3).map((article) => (
-                        <div key={article.id} className="flex gap-3 items-start">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white mt-2 flex-shrink-0" />
-                          <h2 className="text-xl font-bold text-white leading-tight">{article.title}</h2>
+                        <div key={article.id} className="flex gap-4 items-start">
+                          <div className="w-2 h-2 rounded-full bg-primary-500 mt-2 flex-shrink-0 shadow-[0_0_10px_rgba(var(--primary-500),0.5)]" />
+                          <h2 className="text-xl font-bold text-white leading-tight underline decoration-white/20 underline-offset-4">{article.title}</h2>
                         </div>
                       ))}
                     </div>
@@ -119,58 +118,61 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition, onEditionRead })
                 )}
               </div>
 
-              <div className="flex items-center justify-between text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] border-t border-white/20 pt-8">
-                <div className="flex items-center gap-1.5">
-                  <span>Swipe to begin</span>
+              <div className="flex items-center justify-between text-white/40 text-[10px] font-black uppercase tracking-[0.25em] border-t border-white/10 pt-8 animate-pulse">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-[1px] bg-white/30" />
+                  <span>Swipe Cards</span>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1.5">
-                    {Array.from({ length: totalSlides }).map((_, i) => (
-                      <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeSlide === i ? 'bg-white' : 'bg-white/30'}`} />
-                    ))}
-                  </div>
+                <div className="flex items-center gap-2">
                   <ChevronRightIcon size={14} className="opacity-80" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Article Slides */}
+          {/* Article Slides - Flashcard Design */}
           {edition.articles.map((article) => (
-            <div key={article.id} className="flex-shrink-0 w-full h-full relative snap-start overflow-hidden">
-              <ImageWithFallback
-                src={article.imageUrl}
-                alt={article.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+            <div key={article.id} className="flex-shrink-0 w-full h-full relative snap-start overflow-hidden bg-zinc-950">
+              {/* Background with heavy blur/dim for card focus */}
+              <div className="absolute inset-0">
+                <ImageWithFallback
+                  src={article.imageUrl}
+                  alt={article.title}
+                  className="w-full h-full object-cover scale-110 blur-sm opacity-40 transition-transform duration-1000 group-hover:scale-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/80" />
+              </div>
 
-              <div className="absolute inset-0 p-10 flex flex-col justify-end z-10">
-                <div className="mb-4">
-                  <span className="px-3 py-1 bg-white/20 backdrop-blur-xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
-                    {article.category}
-                  </span>
-                </div>
+              {/* Centered Flashcard */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 z-10">
+                <div className="w-full max-w-[400px] flex flex-col items-center text-center space-y-8 animate-fade-in-up">
+                  <div className="space-y-4 flex flex-col items-center">
+                    <span className="px-4 py-1.5 bg-white/10 backdrop-blur-3xl border border-white/10 text-white/80 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-2xl">
+                      {article.category}
+                    </span>
+                    <h3 className="text-[32px] sm:text-[38px] font-black text-white leading-[1.1] tracking-tighter">
+                      {article.title}
+                    </h3>
+                  </div>
 
-                <h3 className="text-[32px] font-extrabold text-white mb-3 leading-[1.05] tracking-tighter">
-                  {article.title}
-                </h3>
+                  <div className="w-12 h-[2px] bg-primary-500 rounded-full" />
 
-                <p className="text-white/70 text-[14px] mb-8 leading-relaxed line-clamp-2 font-medium">
-                  {article.shortDescription}
-                </p>
+                  <p className="text-zinc-300 text-[15px] sm:text-[16px] leading-relaxed font-medium line-clamp-4 max-w-[320px]">
+                    {article.shortDescription}
+                  </p>
 
-                <div className="flex">
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => Analytics.trackArticleClick(article.id, article.url)}
-                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-[#222222] rounded-xl font-bold text-sm hover:bg-zinc-50 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.1)] active:scale-95 group/btn"
-                  >
-                    Read article
-                    <ArrowRight size={18} className="group-hover/btn:translate-x-0.5 transition-transform" />
-                  </a>
+                  <div className="pt-4">
+                    <a
+                      href={article.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => Analytics.trackArticleClick(article.id, article.url)}
+                      className="group/flashcard relative inline-flex items-center gap-3 px-10 py-4 bg-white text-black rounded-full font-black text-[13px] uppercase tracking-wider hover:bg-zinc-100 transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)]"
+                    >
+                      <span>Deep Dive</span>
+                      <ArrowRight size={16} className="transition-transform group-hover/flashcard:translate-x-1" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -199,7 +201,7 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition, onEditionRead })
               ) : (
                 <div className="flex flex-col items-center gap-10">
                   <div className="space-y-3">
-                    <h3 className="text-[28px] font-extrabold text-white tracking-tighter leading-tight">
+                    <h3 className="text-[32px] font-black text-white tracking-tighter leading-tight">
                       How was today's<br />briefing?
                     </h3>
                     <p className="text-zinc-400 text-sm font-medium">
