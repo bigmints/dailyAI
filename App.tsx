@@ -57,7 +57,6 @@ const App: React.FC = () => {
 
   const navItems = [
     { label: 'The Feed', icon: <LayoutGrid size={18} />, mode: AppMode.FEED },
-    { label: 'Curate', icon: <Sparkles size={18} />, mode: AppMode.CURATE },
     { label: 'About', icon: <User size={18} />, mode: AppMode.ABOUT }
   ];
 
