@@ -245,13 +245,13 @@ const SlideshowPost: React.FC<SlideshowPostProps> = ({ edition, onEditionRead })
         {/* Desktop Side Controls */}
         <button
           onClick={(e) => { e.stopPropagation(); scrollToSlide(activeSlide - 1); }}
-          className={`absolute left-5 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 backdrop-blur-md rounded-full hidden sm:flex items-center justify-center text-[#222222] shadow-soft transition-all z-30 ${activeSlide > 0 ? 'opacity-0 group-hover:opacity-100' : 'hidden'}`}
+          className={`absolute left-5 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 backdrop-blur-md rounded-full items-center justify-center text-[#222222] shadow-soft transition-all z-30 ${activeSlide > 0 ? 'hidden sm:flex opacity-0 group-hover:opacity-100' : 'hidden'}`}
         >
           <ChevronLeft size={20} />
         </button>
         <button
           onClick={(e) => { e.stopPropagation(); scrollToSlide(activeSlide + 1); }}
-          className={`absolute right-5 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 backdrop-blur-md rounded-full hidden sm:flex items-center justify-center text-[#222222] shadow-soft transition-all z-30 ${activeSlide < totalSlides - 1 ? 'opacity-0 group-hover:opacity-100' : 'hidden'}`}
+          className={`absolute right-5 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 backdrop-blur-md rounded-full items-center justify-center text-[#222222] shadow-soft transition-all z-30 ${activeSlide < totalSlides - 1 ? 'hidden sm:flex opacity-0 group-hover:opacity-100' : 'hidden'}`}
         >
           <ChevronRight size={20} />
         </button>
