@@ -1,0 +1,34 @@
+{
+    "id": "PULSE-2026-01-14",
+    "date": "2026-01-14",
+    "title": "Silicon Giants Align: The Apple-Google AI Convergence",
+    "author": "Pretheesh",
+    "summary": "Today marks a seismic shift in the AI landscape as Apple pivots its foundation model strategy toward Google's Gemini, while simultaneously launching a pro-tier creative ecosystem.",
+    "cover": {
+        "title": "The Gemini-Siri Era Begins",
+        "summary": "Apple and Google issue a historic joint statement on foundation models, alongside the debut of Apple Creator Studio—a new AI-centric software paradigm.",
+        "imageUrl": "https://www.apple.com/newsroom/images/2026/01/apple-google-partnership-hero.jpg"
+    },
+    "articles": [
+        {
+            "id": "art-20260114-apple-google-ai",
+            "date": "2026-01-14T08:00:00.000Z",
+            "url": "https://blog.google/company-news/inside-google/company-announcements/joint-statement-google-apple/",
+            "title": "Historic Alliance: Google Gemini to Power Apple Intelligence",
+            "shortDescription": "Apple and Google confirm a multi-year deal to base future Apple Foundation Models on Google's Gemini infrastructure.",
+            "fullSummary": "Engineering: Shifts from in-house LLM development to optimizing Gemini 3 on Private Cloud Compute (PCC) and Apple Silicon. UX Design: Siri evolves into a 'universal assistant' with deep multi-step task execution and on-screen awareness. Product Management: Strategically trades model autonomy for market speed, positioning Gemini as the core intelligence layer while maintaining privacy moats.",
+            "imageUrl": "https://blog.google/static/images/google-apple-partnership.png",
+            "category": "Gen AI"
+        },
+        {
+            "id": "art-20260114-creator-studio",
+            "date": "2026-01-14T10:00:00.000Z",
+            "url": "https://www.apple.com/apple-creator-studio/",
+            "title": "Apple Unveils Creator Studio: A New AI-Driven Pro Suite",
+            "shortDescription": "A groundbreaking creative subscription bundling Final Cut Pro, Logic Pro, and Pixelmator with advanced AI tools.",
+            "fullSummary": "Engineering: Leverages Neural Engine for Magnetic Masking and real-time 'Beat Detection' in Final Cut Pro. UX Design: Transitions professional workflows to touch-first iPad experiences with Apple Pencil 'Squeeze' gestures and AI-assisted Montage Maker. Product Management: Challenges Adobe's dominance via an aggressive $12.99/mo bundle, integrating generative AI directly into creative asset pipelines.",
+            "imageUrl": "https://www.apple.com/newsroom/images/2026/01/introducing-apple-creator-studio-hero.jpg",
+            "category": "New Launch"
+        }
+    ]
+}
